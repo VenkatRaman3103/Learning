@@ -21,6 +21,7 @@ const getFunction = closureFunction(); // after creation of value the getFunctio
 // 2. Attaching a data permanently to the function
 function outer(){
     // the counter is the data (within the scope of out function), which is attached to the inner function
+    // private data
     let counter = 0; 
 
     let willNotStore = 12;
@@ -34,8 +35,7 @@ function outer(){
 }
 
 const incrementCounter = outer()
-incrementCounter()
-const result = incrementCounter()
+incrementCounter() // increment the counter to 1
+const result = incrementCounter() // increment the counter from 1 to 2
 
 console.log(result)
-
