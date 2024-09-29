@@ -9,3 +9,4 @@ function sumAllTheParameter(num1, num2, num3){
 const normalWay = sumAllTheParameter(10, 12, 14)
 console.log(normalWay)
 
+
