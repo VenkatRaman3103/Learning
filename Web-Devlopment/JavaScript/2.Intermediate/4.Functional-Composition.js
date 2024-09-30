@@ -21,6 +21,7 @@ const result3 = subtract1(result2)
 
 // functional Composition with reducer
 
+// Point free style (Tacit Programming)
 const add = (num) => num + 2
 const multiple = (num) => num * 2
 const subtract = (num) => num - 2
