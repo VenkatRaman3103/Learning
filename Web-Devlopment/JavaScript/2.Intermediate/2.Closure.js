@@ -8,14 +8,40 @@ function closureFunction() {
         return 'hello world'
     }
 
-    // return function value 
+    // return function 
     return innerFunction;
 }
 // assigning the function value of closureFunction to the identifier called getFunction
 const getFunction = closureFunction(); // after creation of value the getFunction has 0 relationship to the closureFunction
 
-// const result = getFunction()
-// console.log(result);
+const closure = getFunction()
+console.log(result);
+
+// accessing a data of the function from global scope
+function temporaryScope(){
+    let counter = 0;
+
+    function incrementCounter(){
+        counter++
+    }
+
+    incrementCounter()
+}
+
+temporaryScope() // every time it creates a new execution context and deletes when function end, so the  data will not be permanently attached to the function
+temporaryScope()
+
+function permanentlyAttached(){
+    let counter=0 
+
+    const incrementCounter = ()=> {
+        counter++
+    }
+
+    return incrementCounter
+}
+
+const storeFunction = permanentlyAttached()
 
 
 // 2. Attaching a data permanently to the function
