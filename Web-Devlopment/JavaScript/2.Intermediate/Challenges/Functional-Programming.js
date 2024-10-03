@@ -84,3 +84,26 @@ const challenge4 = once(addByTwo)
 console.log(challenge4(4))
 console.log(challenge4(8))
 console.log(challenge4(8))
+
+// challenge: 5
+function after(count, func) {
+
+    const printSomething = () => {
+
+        count--
+
+        if (count == 0) {
+            func()
+        } else {
+            console.log('nothing is printed')
+        }
+    }
+
+    return printSomething
+}
+
+const called = () => { console.log('hello is printed') }
+const challenge5 = after(3, called)
+challenge5()
+challenge5()
+challenge5()
