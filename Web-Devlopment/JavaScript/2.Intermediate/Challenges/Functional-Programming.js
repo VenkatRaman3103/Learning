@@ -107,3 +107,30 @@ const challenge5 = after(3, called)
 challenge5()
 challenge5()
 challenge5()
+
+// challenge: 6
+
+// challenge: 7
+function rollCall(names) {
+    let numberOfNames = names.length
+
+    let index = 0
+
+    function printName() {
+        if (numberOfNames !== 0) {
+            console.log(names[index])
+            numberOfNames--
+            index++
+        }else{
+            console.log('Everyone accounted for')
+        }
+    }
+
+    return printName
+}
+
+const challenge7 = rollCall(['Victoria', 'Juan', 'Ruth'])
+challenge7()
+challenge7()
+challenge7()
+challenge7()
