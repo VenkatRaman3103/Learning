@@ -45,7 +45,7 @@ incrementCounter2()
 const addByX = (x) => {
 
     const incrementXby = (value) => {
-        x+=value
+        x += value
 
         console.log(x)
     }
@@ -55,3 +55,32 @@ const addByX = (x) => {
 
 const challenge3 = addByX(5)
 challenge3(4)
+
+// challenge: 4
+
+function once(func) {
+
+    let memoizedData = 0;
+
+    let counter = 0;
+
+    function innerFunction(value) {
+        if (counter == 0) {
+            memoizedData += func(value)
+            counter++
+        }
+        return memoizedData
+    }
+
+    return innerFunction;
+}
+
+const addByTwo = (data) => {
+    data += 2
+    return data
+}
+
+const challenge4 = once(addByTwo)
+console.log(challenge4(4))
+console.log(challenge4(8))
+console.log(challenge4(8))
