@@ -134,3 +134,28 @@ challenge7()
 challenge7()
 challenge7()
 challenge7()
+
+// challenge: 8
+function saveOutput(callback, password){
+    let passedIn ={}
+
+    function checkPassword(input){
+        if (input == password){
+            console.log(passedIn)
+        }else{
+            passedIn[input] = callback(input)            
+            console.log(passedIn[input])
+        }
+    }
+
+    return checkPassword
+}
+
+function multipleBy2(input){
+    return input * 2
+}
+
+const challenge8 = saveOutput(multipleBy2, 'raman')
+challenge8(3)
+challenge8(4)
+challenge8('raman')
