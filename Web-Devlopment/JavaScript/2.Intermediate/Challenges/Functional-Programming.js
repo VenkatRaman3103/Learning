@@ -121,7 +121,7 @@ function rollCall(names) {
             console.log(names[index])
             numberOfNames--
             index++
-        }else{
+        } else {
             console.log('Everyone accounted for')
         }
     }
@@ -136,14 +136,14 @@ challenge7()
 challenge7()
 
 // challenge: 8
-function saveOutput(callback, password){
-    let passedIn ={}
+function saveOutput(callback, password) {
+    let passedIn = {}
 
-    function checkPassword(input){
-        if (input == password){
+    function checkPassword(input) {
+        if (input == password) {
             console.log(passedIn)
-        }else{
-            passedIn[input] = callback(input)            
+        } else {
+            passedIn[input] = callback(input)
             console.log(passedIn[input])
         }
     }
@@ -151,7 +151,7 @@ function saveOutput(callback, password){
     return checkPassword
 }
 
-function multipleBy2(input){
+function multipleBy2(input) {
     return input * 2
 }
 
@@ -159,3 +159,44 @@ const challenge8 = saveOutput(multipleBy2, 'raman')
 challenge8(3)
 challenge8(4)
 challenge8('raman')
+
+// challenge: 9
+function cycleIterator(array) {
+
+    let length = array.length
+
+    let index = 0
+
+    function printElement() {
+        console.log(array[index])
+        // circular indexing
+        index = (index + 1) % length        
+    }
+
+    return printElement
+}
+
+const challenge9 = cycleIterator(['Fri', 'Sat', 'Sun'])
+challenge9()
+challenge9()
+challenge9()
+challenge9()
+challenge9()
+
+// challenge: 10
+function defineFirstArgs(func, arg){
+
+    function inner(input){
+        const result = func(arg, input)
+        console.log(result)
+    }
+
+    return inner
+}
+
+const multiple = (big, small) => big - small
+
+const challenge10 = defineFirstArgs(multiple, 5)
+challenge10(2)
+challenge10(1)
+challenge10(5)
