@@ -170,7 +170,7 @@ function cycleIterator(array) {
     function printElement() {
         console.log(array[index])
         // circular indexing
-        index = (index + 1) % length        
+        index = (index + 1) % length
     }
 
     return printElement
@@ -184,9 +184,9 @@ challenge9()
 challenge9()
 
 // challenge: 10
-function defineFirstArgs(func, arg){
+function defineFirstArgs(func, arg) {
 
-    function inner(input){
+    function inner(input) {
         const result = func(arg, input)
         console.log(result)
     }
@@ -200,3 +200,53 @@ const challenge10 = defineFirstArgs(multiple, 5)
 challenge10(2)
 challenge10(1)
 challenge10(5)
+
+
+// challenge: 11
+
+function dateStamp(func) {
+    let tracker = {}
+
+    function trackerFunction(input) {
+        const date = new Date()
+        tracker[func(input)] = date
+
+        console.log(tracker)
+    }
+
+    return trackerFunction
+}
+
+const stampedMultiplyBy2 = (num) => num * 2
+
+const challenge11 = dateStamp(stampedMultiplyBy2)
+challenge11(10)
+challenge11(11)
+challenge11(12)
+
+
+// challenge: 12
+function censor() {
+    let wordTracker = {}
+
+    function assignOrReplace(word1, word2) {
+        if (word2 != undefined) {
+            wordTracker[word1] = word2
+        } else {
+            let arrayOfWords = word1.split(" ")
+
+            let sentence = arrayOfWords.map((word) => {
+                return wordTracker[word] ? wordTracker[word] : word
+            }).join(" ")
+
+            console.log(sentence)
+        }
+    }
+
+    return assignOrReplace
+}
+
+const challenge13 = censor()
+challenge13('dogs', 'cats')
+challenge13('quick', 'slow')
+challenge13('The quick brown fox jumps over the lazy dogs')
