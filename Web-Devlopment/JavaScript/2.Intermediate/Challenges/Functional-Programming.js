@@ -230,14 +230,14 @@ function censor() {
     let wordTracker = {}
 
     function assignOrReplace(word1, word2) {
-        if (word2 != undefined) {
+        if (word2 !== undefined) {
             wordTracker[word1] = word2
         } else {
-            let arrayOfWords = word1.split(" ")
+            let arrayOfWords = word1.split(/(\b)/)  
 
             let sentence = arrayOfWords.map((word) => {
                 return wordTracker[word] ? wordTracker[word] : word
-            }).join(" ")
+            }).join("")
 
             console.log(sentence)
         }
@@ -245,6 +245,7 @@ function censor() {
 
     return assignOrReplace
 }
+
 
 const challenge13 = censor()
 challenge13('dogs', 'cats')
