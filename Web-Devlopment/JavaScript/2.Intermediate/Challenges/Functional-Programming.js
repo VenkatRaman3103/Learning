@@ -247,7 +247,28 @@ function censor() {
 }
 
 
-const challenge13 = censor()
-challenge13('dogs', 'cats')
-challenge13('quick', 'slow')
-challenge13('The quick brown fox jumps over the lazy dogs')
+const challenge12 = censor()
+challenge12('dogs', 'cats')
+challenge12('quick', 'slow')
+challenge12('The quick brown fox jumps over the lazy dogs')
+
+// challenge: 13
+function createSecretHolder(secret){
+
+    let storeSecret = secret
+
+    function getSecret(){
+        return storeSecret;
+    }
+
+    function setSecret(newSecret){
+        storeSecret = newSecret
+    }
+
+    return {getSecret, setSecret}
+}
+
+const challenge13 = (createSecretHolder('raman'))
+console.log(challenge13.getSecret())
+challenge13.setSecret('venkat')
+console.log(challenge13.getSecret())
