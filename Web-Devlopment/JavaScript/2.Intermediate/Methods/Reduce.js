@@ -31,4 +31,3 @@ const add = (a, b) => a + b;
 
 const value = ReduceValue([1, 2, 3, 4, 5], add, 0)
 console.log(value)
-
