@@ -71,35 +71,17 @@ const challenge6 = reduce([1, 2, 3, 4, 5], reducer, 0)
 console.log('challenge6: ', challenge6)
 
 // challenge: 7
-const intersection = (arrays, findMatch) => {
+const intersection = (arrays) => {
 
-    let repeatedElements = []
+    let repeatedElements =arrays[0]
 
-    let element;
-    let array;
-
-    for (let i = 0; i < arrays.length; i++) {
-        array = arrays[i]
-
-        for (let j = 0; j < array.length; j++) {
-            element = array[j]
-
-            findMatch(element, array, repeatedElements)
-
-        }
+    for(let i = 1; i < arrays.length; i++){
+        repeatedElements = repeatedElements.filter((element)=>arrays[i].includes(element))
     }
 
     return repeatedElements
 }
 
-const findMatch = (element, array, repeatedElements) => {
-    for (let i = 0; i < array.length; i++) {
-        if (array[i] == element) {
-            console.log(array[i], 'repeated')
-            repeatedElements.push(array[i])
-        }
-    }
-}
 
-const challenge7 = intersection([[1, 2, 3, 4], [1, 5, 6, 7, 8], [1, 9, 10, 11]], findMatch)
+const challenge7 = intersection([[1, 2, 3, 4], [1, 5, 2, 3, 8], [1, 2, 10, 11]])
 console.log('challenge7:', challenge7)
