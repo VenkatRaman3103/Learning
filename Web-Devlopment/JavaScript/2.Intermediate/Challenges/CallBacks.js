@@ -114,12 +114,12 @@ function union(arrays) {
             let isExist = false
 
             for (let i = 0; i < acc.length; i++) {
-                if (element == acc[i]){
+                if (element == acc[i]) {
                     isExist = true
                 }
             }
 
-            if(!isExist){
+            if (!isExist) {
                 acc.push(element)
             }
         })
@@ -132,3 +132,28 @@ function union(arrays) {
 const challenge8 = union([[5, 10, 15, 20], [15, 88, 1, 5, 7], [1, 10, 15, 5, 20]])
 console.log('challenge8', challenge8)
 
+function objOfMap(array1, array2, callback) {
+    let result = {}
+
+    const n = array1.length
+
+    for (let i = 0; i < n; i++) {
+
+        let upperCased = callback(array1[i])
+
+        if (upperCased == array2[i]) {
+            result[array1[i]] = array2[i]
+        }
+    }
+
+    return result
+}
+
+function callback(string) {
+    return string.toUpperCase()
+}
+
+const challenge9 = objOfMap(['hi', 'howdy', 'bye', 'later', 'hello'], ['HI', 'Howdy', 'BYE', 'LATER', 'hello'], callback)
+
+
+console.log(challenge9, 'challenge9')
