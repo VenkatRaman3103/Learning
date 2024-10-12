@@ -132,6 +132,7 @@ function union(arrays) {
 const challenge8 = union([[5, 10, 15, 20], [15, 88, 1, 5, 7], [1, 10, 15, 5, 20]])
 console.log('challenge8', challenge8)
 
+// challenge9
 function objOfMap(array1, array2, callback) {
     let result = {}
 
@@ -157,3 +158,40 @@ const challenge9 = objOfMap(['hi', 'howdy', 'bye', 'later', 'hello'], ['HI', 'Ho
 
 
 console.log(challenge9, 'challenge9')
+
+// challenges: 10
+function multipleMap(array, callbacks) {
+
+    let result = {}
+
+    for (let i = 0; i < array.length; i++) {
+        const element = array[i]
+
+        result[element] = []
+
+        for (let j = 0; j < callbacks.length; j++) {
+
+            const callback = callbacks[j]
+
+            result[element].push(callback(element))
+        }
+    }
+
+    return result
+
+}
+
+function changeToUpperCase(string) {
+    return string.toUpperCase()
+}
+
+function changeToCamelCase(string) {
+    return string[0].toUpperCase() + string.slice(1).toLowerCase()
+}
+
+function changeToLowerCase(string) {
+    return string.toLowerCase()
+}
+
+const challenge10 = multipleMap(['catfood', 'glue', 'beer'], [changeToUpperCase, changeToCamelCase, changeToLowerCase])
+console.log(challenge10)
