@@ -195,3 +195,28 @@ function changeToLowerCase(string) {
 
 const challenge10 = multipleMap(['catfood', 'glue', 'beer'], [changeToUpperCase, changeToCamelCase, changeToLowerCase])
 console.log(challenge10)
+
+// challenge: 11
+function objectFilter(obj, callback) {
+
+    let result = {}
+
+    Object.keys(obj).map((key) => {
+        const upperCased = callback(key)
+
+        if (upperCased == obj[key]) {
+            result[key] = upperCased
+        }
+    })
+
+    return result
+}
+
+const cities = {
+    London: 'LONDON',
+    LA: 'Los Angeles',
+    Paris: 'PARIS',
+};
+
+const challenge11 = objectFilter(cities, (string) => string.toUpperCase())
+console.log(challenge11, 'challenge11')
