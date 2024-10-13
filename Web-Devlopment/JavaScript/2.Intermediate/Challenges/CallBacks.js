@@ -245,3 +245,35 @@ function isOdd(element){
 
 const challenge12 = majority([2, 3, 4, 5], isOdd)
 console.log(challenge12)
+
+// challenge: 13
+function priority(array, callback){
+
+    let wordsWithS = []
+
+    for(let i = 0; i < array.length ; i++){
+        const word = array[i]
+
+        if(callback(word)){
+            wordsWithS.push(word)
+        }
+    }    
+
+    for(let j = 0; j < array.length ; j++){
+        const remainingWord = array[j]
+
+        if(!wordsWithS.includes(remainingWord)){
+                wordsWithS.push(remainingWord)            
+        }
+
+    }
+
+    return wordsWithS
+}
+
+function isStartWithS(string){
+    return  string[0] == 's' || string[0] == 'S'    
+}
+
+const challenge13 = priority(['curb', 'rickandmorty', 'seinfeld', 'sunny', 'friends'], isStartWithS)
+console.log(challenge13)
