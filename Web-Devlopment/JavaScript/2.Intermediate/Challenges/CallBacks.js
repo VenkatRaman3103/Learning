@@ -220,3 +220,28 @@ const cities = {
 
 const challenge11 = objectFilter(cities, (string) => string.toUpperCase())
 console.log(challenge11, 'challenge11')
+
+// challenge: 12
+function majority(array, callback){
+    let majorityCounter ={numberOfTrues:0,numberOfFalse:0}
+
+    for(let i = 0; i < array.length; i++){
+        const element = array[i]
+
+        if(callback(element)){
+            majorityCounter.numberOfTrues++
+        }else{
+            majorityCounter.numberOfFalse++
+        }
+    }
+
+    return majorityCounter.numberOfTrues > majorityCounter.numberOfFalse
+    
+}
+
+function isOdd(element){
+    return element % 2 == 1    
+}
+
+const challenge12 = majority([2, 3, 4, 5], isOdd)
+console.log(challenge12)
