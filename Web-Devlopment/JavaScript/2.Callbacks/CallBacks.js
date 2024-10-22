@@ -1,24 +1,24 @@
 // challenge: 1
 function addTwo(num) {
-  return num + 2;
+	return num + 2;
 }
 
 // challenge: 2
 function adds(word) {
-  return word + "s";
+	return word + "s";
 }
 
 // challenge: 3
 function map(array, callbackFunction) {
-  let temp = [];
+	let temp = [];
 
-  for (let i = 0; i < array.length; i++) {
-    temp.push(callbackFunction(array[i]));
-  }
+	for (let i = 0; i < array.length; i++) {
+		temp.push(callbackFunction(array[i]));
+	}
 
-  console.log("hello world");
+	console.log("hello world");
 
-  return temp;
+	return temp;
 }
 
 const multipleByTwo = (num) => num * 2;
@@ -28,9 +28,9 @@ console.log(challenge3);
 
 // challenge: 4
 function forEach(array, callbackFunction) {
-  for (let i = 0; i < array.length; i++) {
-    updateString(array[i]);
-  }
+	for (let i = 0; i < array.length; i++) {
+		updateString(array[i]);
+	}
 }
 
 let string = "";
@@ -43,13 +43,13 @@ console.log(string);
 
 // challenge: 5
 function mapWith(array, callbackFunction) {
-  let tempArray = [];
+	let tempArray = [];
 
-  array.forEach((element) => {
-    tempArray.push(callbackFunction(element));
-  });
+	array.forEach((element) => {
+		tempArray.push(callbackFunction(element));
+	});
 
-  return tempArray;
+	return tempArray;
 }
 
 const multipleByThree = (num) => num * 3;
@@ -59,10 +59,10 @@ console.log(challenge5, "challenge5");
 
 // challenge: 6
 const reduce = (array, callbackFunction, initialValue) => {
-  for (let i = 0; i < array.length; i++) {
-    initialValue = initialValue + callbackFunction(array[i]);
-  }
-  return initialValue;
+	for (let i = 0; i < array.length; i++) {
+		initialValue = initialValue + callbackFunction(array[i]);
+	}
+	return initialValue;
 };
 
 const reducer = (num) => num + 2;
@@ -72,160 +72,160 @@ console.log("challenge6: ", challenge6);
 
 // challenge: 7
 const intersection = (arrays) => {
-  let repeatedElements = arrays[0];
+	let repeatedElements = arrays[0];
 
-  for (let i = 1; i < arrays.length; i++) {
-    repeatedElements = repeatedElements.filter((element) =>
-      arrays[i].includes(element),
-    );
-  }
+	for (let i = 1; i < arrays.length; i++) {
+		repeatedElements = repeatedElements.filter((element) =>
+			arrays[i].includes(element),
+		);
+	}
 
-  return repeatedElements;
+	return repeatedElements;
 };
 
 const challenge7 = intersection([
-  [1, 2, 3, 4],
-  [1, 5, 2, 3, 8],
-  [1, 2, 10, 11],
+	[1, 2, 3, 4],
+	[1, 5, 2, 3, 8],
+	[1, 2, 10, 11],
 ]);
 console.log("challenge7:", challenge7);
 
 const set = {};
 
 if (set[0]) {
-  console.log("hello world");
+	console.log("hello world");
 }
 
 // challenge: 8
 function union(arrays) {
-  let hashTable = {};
+	let hashTable = {};
 
-  let nonRepeatingElement = [];
+	let nonRepeatingElement = [];
 
-  // for (let i = 0; i < arrays.length; i++) {
-  //     const array = arrays[i]
+	// for (let i = 0; i < arrays.length; i++) {
+	//     const array = arrays[i]
 
-  //     for (let j = 0; j < array.length; j++) {
-  //         const element = array[j]
+	//     for (let j = 0; j < array.length; j++) {
+	//         const element = array[j]
 
-  //         if(!nonRepeatingElement.includes(element)){
-  //             nonRepeatingElement.push(element)
-  //         }
-  //     }
-  // }
+	//         if(!nonRepeatingElement.includes(element)){
+	//             nonRepeatingElement.push(element)
+	//         }
+	//     }
+	// }
 
-  const result = arrays.reduce((acc, array) => {
-    array.forEach((element) => {
-      let isExist = false;
+	const result = arrays.reduce((acc, array) => {
+		array.forEach((element) => {
+			let isExist = false;
 
-      for (let i = 0; i < acc.length; i++) {
-        if (element == acc[i]) {
-          isExist = true;
-        }
-      }
+			for (let i = 0; i < acc.length; i++) {
+				if (element == acc[i]) {
+					isExist = true;
+				}
+			}
 
-      if (!isExist) {
-        acc.push(element);
-      }
-    });
-    return acc;
-  }, []);
+			if (!isExist) {
+				acc.push(element);
+			}
+		});
+		return acc;
+	}, []);
 
-  return result;
+	return result;
 }
 
 const challenge8 = union([
-  [5, 10, 15, 20],
-  [15, 88, 1, 5, 7],
-  [1, 10, 15, 5, 20],
+	[5, 10, 15, 20],
+	[15, 88, 1, 5, 7],
+	[1, 10, 15, 5, 20],
 ]);
 console.log("challenge8", challenge8);
 
 // challenge9
 function objOfMap(array1, array2, callback) {
-  let result = {};
+	let result = {};
 
-  const n = array1.length;
+	const n = array1.length;
 
-  for (let i = 0; i < n; i++) {
-    let upperCased = callback(array1[i]);
+	for (let i = 0; i < n; i++) {
+		let upperCased = callback(array1[i]);
 
-    if (upperCased == array2[i]) {
-      result[array1[i]] = array2[i];
-    }
-  }
+		if (upperCased == array2[i]) {
+			result[array1[i]] = array2[i];
+		}
+	}
 
-  return result;
+	return result;
 }
 
 function callback(string) {
-  return string.toUpperCase();
+	return string.toUpperCase();
 }
 
 const challenge9 = objOfMap(
-  ["hi", "howdy", "bye", "later", "hello"],
-  ["HI", "Howdy", "BYE", "LATER", "hello"],
-  callback,
+	["hi", "howdy", "bye", "later", "hello"],
+	["HI", "Howdy", "BYE", "LATER", "hello"],
+	callback,
 );
 
 console.log(challenge9, "challenge9");
 
 // challenges: 10
 function multipleMap(array, callbacks) {
-  let result = {};
+	let result = {};
 
-  for (let i = 0; i < array.length; i++) {
-    const element = array[i];
+	for (let i = 0; i < array.length; i++) {
+		const element = array[i];
 
-    result[element] = [];
+		result[element] = [];
 
-    for (let j = 0; j < callbacks.length; j++) {
-      const callback = callbacks[j];
+		for (let j = 0; j < callbacks.length; j++) {
+			const callback = callbacks[j];
 
-      result[element].push(callback(element));
-    }
-  }
+			result[element].push(callback(element));
+		}
+	}
 
-  return result;
+	return result;
 }
 
 function changeToUpperCase(string) {
-  return string.toUpperCase();
+	return string.toUpperCase();
 }
 
 function changeToCamelCase(string) {
-  return string[0].toUpperCase() + string.slice(1).toLowerCase();
+	return string[0].toUpperCase() + string.slice(1).toLowerCase();
 }
 
 function changeToLowerCase(string) {
-  return string.toLowerCase();
+	return string.toLowerCase();
 }
 
 const challenge10 = multipleMap(
-  ["catfood", "glue", "beer"],
-  [changeToUpperCase, changeToCamelCase, changeToLowerCase],
+	["catfood", "glue", "beer"],
+	[changeToUpperCase, changeToCamelCase, changeToLowerCase],
 );
 console.log(challenge10);
 
 // challenge: 11
 function objectFilter(obj, callback) {
-  let result = {};
+	let result = {};
 
-  Object.keys(obj).map((key) => {
-    const upperCased = callback(key);
+	Object.keys(obj).map((key) => {
+		const upperCased = callback(key);
 
-    if (upperCased == obj[key]) {
-      result[key] = upperCased;
-    }
-  });
+		if (upperCased == obj[key]) {
+			result[key] = upperCased;
+		}
+	});
 
-  return result;
+	return result;
 }
 
 const cities = {
-  London: "LONDON",
-  LA: "Los Angeles",
-  Paris: "PARIS",
+	London: "LONDON",
+	LA: "Los Angeles",
+	Paris: "PARIS",
 };
 
 const challenge11 = objectFilter(cities, (string) => string.toUpperCase());
@@ -233,23 +233,23 @@ console.log(challenge11, "challenge11");
 
 // challenge: 12
 function majority(array, callback) {
-  let majorityCounter = { numberOfTrues: 0, numberOfFalse: 0 };
+	let majorityCounter = { numberOfTrues: 0, numberOfFalse: 0 };
 
-  for (let i = 0; i < array.length; i++) {
-    const element = array[i];
+	for (let i = 0; i < array.length; i++) {
+		const element = array[i];
 
-    if (callback(element)) {
-      majorityCounter.numberOfTrues++;
-    } else {
-      majorityCounter.numberOfFalse++;
-    }
-  }
+		if (callback(element)) {
+			majorityCounter.numberOfTrues++;
+		} else {
+			majorityCounter.numberOfFalse++;
+		}
+	}
 
-  return majorityCounter.numberOfTrues > majorityCounter.numberOfFalse;
+	return majorityCounter.numberOfTrues > majorityCounter.numberOfFalse;
 }
 
 function isOdd(element) {
-  return element % 2 == 1;
+	return element % 2 == 1;
 }
 
 const challenge12 = majority([2, 3, 4, 5], isOdd);
@@ -257,34 +257,60 @@ console.log(challenge12);
 
 // challenge: 13
 function priority(array, callback) {
-  let wordsWithS = [];
+	let wordsWithS = [];
 
-  for (let i = 0; i < array.length; i++) {
-    const word = array[i];
+	for (let i = 0; i < array.length; i++) {
+		const word = array[i];
 
-    if (callback(word)) {
-      wordsWithS.push(word);
-    }
-  }
+		if (callback(word)) {
+			wordsWithS.push(word);
+		}
+	}
 
-  for (let j = 0; j < array.length; j++) {
-    const remainingWord = array[j];
+	for (let j = 0; j < array.length; j++) {
+		const remainingWord = array[j];
 
-    if (!wordsWithS.includes(remainingWord)) {
-      wordsWithS.push(remainingWord);
-    }
-  }
+		if (!wordsWithS.includes(remainingWord)) {
+			wordsWithS.push(remainingWord);
+		}
+	}
 
-  return wordsWithS;
+	return wordsWithS;
 }
 
 function isStartWithS(string) {
-  return string[0] == "s" || string[0] == "S";
+	return string[0] == "s" || string[0] == "S";
 }
 
 const challenge13 = priority(
-  ["curb", "rickandmorty", "seinfeld", "sunny", "friends"],
-  isStartWithS,
+	["curb", "rickandmorty", "seinfeld", "sunny", "friends"],
+	isStartWithS,
 );
 console.log(challenge13);
 
+function countBy(array, callback) {
+	let result = {};
+
+	for (let i = 0; i < array.length; i++) {
+		const element = callback(array[i]);
+
+		if (result[element]) {
+			result[element]++;
+		} else {
+			result[element] = 1;
+		}
+	}
+
+	return result;
+}
+
+function checkOdd(num) {
+	if (num % 2 == 0) {
+		return "even";
+	} else {
+		return "odd";
+	}
+}
+
+const challenge14 = countBy([2, 1, 3, 5, 6], checkOdd);
+console.log(challenge14, "challenge14");
