@@ -314,3 +314,9 @@ function checkOdd(num) {
 
 const challenge14 = countBy([2, 1, 3, 5, 6], checkOdd);
 console.log(challenge14, "challenge14");
+
+function functionName() {
+	for (let i = 0; arr.length; i++) {
+		console.log("hell world");
+	}
+}
