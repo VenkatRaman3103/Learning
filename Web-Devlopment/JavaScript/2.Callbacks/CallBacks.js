@@ -320,3 +320,33 @@ function functionName() {
 		console.log("hell world");
 	}
 }
+
+// challenge: 15
+function groupBy(array, callback) {
+	let groupedObj = {};
+
+	for (let i = 0; i < array.length; i++) {
+		const element = array[i];
+
+		const result = callback(element);
+
+		if (groupedObj[result]) {
+			groupedObj[result].push(element);
+		} else {
+			groupedObj[result] = [];
+			groupedObj[result].push(element);
+		}
+	}
+
+	return groupedObj;
+}
+
+function roundTheNumber(num) {
+	return Math.floor(num);
+}
+
+const challenge15 = groupBy(
+	[1.1, 1.2, 1.3, 1.4, 2.1, 2.2, 2.3, 2.4],
+	roundTheNumber,
+);
+console.log(challenge15, "challenge15");

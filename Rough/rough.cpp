@@ -3,23 +3,23 @@
 using namespace std;
 
 class Solution {
-public:
-  int removeElement(vector<int> &nums, int val) {
-    int counter = 0;
+  public:
+    int removeElement(vector<int> &nums, int val) {
+        int counter = 0;
 
-    vector<int> filterdArr = {};
+        vector<int> filterdArr = {};
 
-    for (int i = 0; i < nums.size(); i++) {
-      int element = nums[i];
-      if (element == val) {
-        counter++;
-      } else {
-        filterdArr.push_back(element);
-      }
-    }
+        for (int i = 0; i < nums.size(); i++) {
+            int element = nums[i];
+            if (element == val) {
+                counter++;
+            } else {
+                filterdArr.push_back(element);
+            }
+        }
 
-    return counter;
-  };
+        return counter;
+    };
 };
 
 int main() {
