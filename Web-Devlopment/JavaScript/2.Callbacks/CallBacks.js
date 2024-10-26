@@ -350,3 +350,82 @@ const challenge15 = groupBy(
 	roundTheNumber,
 );
 console.log(challenge15, "challenge15");
+
+// challenge: 16
+function goodKeys(obj, callback) {
+	let returnArray = [];
+
+	Object.keys(obj).map((item) => {
+		if (callback(obj[item])) {
+			returnArray.push(item);
+		}
+	});
+
+	return returnArray;
+}
+
+function startWithBird(word) {
+	return word.slice(0, 4).toLowerCase() == "bird";
+}
+
+const challenge17 = goodKeys(
+	{
+		mac: "priest",
+		dennis: "calculating",
+		charlie: "birdlaw",
+		dee: "bird",
+		frank: "warthog",
+	},
+	startWithBird,
+);
+console.log(challenge17, "challenge17");
+
+// challenge: 18
+function objFilter(obj, callback) {
+	let returnObj = {};
+
+	Object.keys(obj).map((key) => {
+		const value = obj[key];
+
+		const dividedKey = callback(key);
+
+		if (dividedKey == value) {
+			returnObj[key] = value;
+		}
+	});
+
+	return returnObj;
+}
+
+function half(num) {
+	return num / 2;
+}
+
+const challenge18 = objFilter({ 6: 3, 2: 1, 12: 4 }, half);
+console.log(challenge18, "challenge18");
+
+// challenge: 19
+function rating(arrayOfFunction, val) {
+	let counter = 0;
+
+	for (let i = 0; i < arrayOfFunction.length; i++) {
+		const getFunction = arrayOfFunction[i];
+
+		const result = getFunction(val);
+
+		if (result) {
+			counter++;
+		}
+	}
+
+	return (counter / arrayOfFunction.length) * 100;
+}
+
+// list of function that return a boolean
+const isEven = (num) => num % 2 === 0;
+const greaterthanFour = (num) => num > 4;
+const isSquare = (num) => Math.sqrt(num) % 1 === 0;
+const hasSix = (num) => num.toString().includes("6");
+
+const challenge19 = rating([isEven, greaterthanFour, isSquare, hasSix], 66);
+console.log(challenge19, "challenge19");
