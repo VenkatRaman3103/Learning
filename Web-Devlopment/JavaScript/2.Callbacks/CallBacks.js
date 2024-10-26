@@ -445,3 +445,31 @@ const capAddlowRepeat = [capitalize, addLowerCase, repeat];
 const challenge20 = pipe(capAddlowRepeat, "cat");
 
 console.log(challenge20, "challenge20");
+
+// challenge: 21
+function highestFunction(objOfFuncs, subject) {
+	let highestValue = 0;
+
+	let returnKey;
+
+	Object.keys(objOfFuncs).map((key) => {
+		const getFunction = objOfFuncs[key];
+
+		const result = getFunction(subject);
+
+		if (result > highestValue) {
+			highestValue = result;
+			returnKey = key;
+		}
+	});
+
+	return returnKey;
+}
+
+const groupOfFuncs = {};
+groupOfFuncs.double = (n) => n * 2;
+groupOfFuncs.addTen = (n) => n + 10;
+groupOfFuncs.inverse = (n) => n * -1;
+
+const challenge21 = highestFunction(groupOfFuncs, -20);
+console.log(challenge21, "challenge21");
