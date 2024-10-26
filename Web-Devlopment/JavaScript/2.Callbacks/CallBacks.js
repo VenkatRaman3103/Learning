@@ -429,3 +429,19 @@ const hasSix = (num) => num.toString().includes("6");
 
 const challenge19 = rating([isEven, greaterthanFour, isSquare, hasSix], 66);
 console.log(challenge19, "challenge19");
+
+//challenge: 20
+function pipe(functionsArr, value) {
+	const result = functionsArr.reduce((acc, fun) => fun(acc), value);
+	return result;
+}
+
+// list of function
+const capitalize = (str) => str.toUpperCase();
+const addLowerCase = (str) => str + str.toLowerCase();
+const repeat = (str) => str + str;
+const capAddlowRepeat = [capitalize, addLowerCase, repeat];
+
+const challenge20 = pipe(capAddlowRepeat, "cat");
+
+console.log(challenge20, "challenge20");
