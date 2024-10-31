@@ -473,3 +473,22 @@ groupOfFuncs.inverse = (n) => n * -1;
 
 const challenge21 = highestFunction(groupOfFuncs, -20);
 console.log(challenge21, "challenge21");
+
+// challenge: 22
+function combineOperations(value, arrOfFunctions) {
+	return arrOfFunctions.reduce((acc, fun) => fun(acc), value);
+}
+
+function add100(num) {
+	return num + 100;
+}
+
+function divByFive(num) {
+	return num / 5;
+}
+
+function multiplyByThree(num) {
+	return num * 3;
+}
+
+console.log(combineOperations(0, [add100, divByFive, multiplyByThree]));
