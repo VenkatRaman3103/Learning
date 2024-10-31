@@ -284,3 +284,41 @@ challenge14();
 challenge14();
 challenge14();
 
+// challenge: 15
+function roulette(n) {
+	let limit = n;
+	let counter = 0;
+
+	let isNewInvoke = false;
+
+	function invocationCycle() {
+		counter = counter + 1;
+
+		if (isNewInvoke == false) {
+			if (counter == limit) {
+				isNewInvoke = true;
+				return "win";
+			} else {
+				return "spin";
+			}
+		} else {
+			return "pick";
+		}
+	}
+
+	return invocationCycle;
+}
+
+const challenge15 = roulette(5);
+
+console.log(challenge15());
+console.log(challenge15());
+console.log(challenge15());
+console.log(challenge15());
+console.log(challenge15());
+console.log(challenge15());
+console.log(challenge15());
+console.log(challenge15());
+console.log(challenge15());
+console.log(challenge15());
+console.log(challenge15());
