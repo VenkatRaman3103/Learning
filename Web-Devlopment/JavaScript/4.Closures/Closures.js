@@ -351,3 +351,39 @@ console.log(challenge16(12));
 console.log(challenge16());
 console.log(challenge16(8));
 console.log(challenge16(6));
+
+// challenge: 17
+function makeFuncTester(arrayOfArray) {
+	let bool = true;
+
+	function isSame(callback) {
+		for (let i = 0; i < arrayOfArray.length; i++) {
+			let subArray = arrayOfArray[i];
+
+			bool = subArray[1] == callback(subArray[0]);
+
+			if (!bool) {
+				return bool;
+			}
+		}
+
+		return bool;
+	}
+
+	return isSame;
+}
+
+let capLastTestCases = [];
+capLastTestCases.push(["hello", "hellO"]);
+capLastTestCases.push(["googbye", "googbyE"]);
+capLastTestCases.push(["howdy", "howdY"]);
+
+const capitalize = (str) => str.toUpperCase();
+const capitalizeTheLast = (str) => {
+	return str.slice(0, -1) + str.slice(-1).toUpperCase();
+};
+
+const challenge17 = makeFuncTester(capLastTestCases);
+
+console.log(challenge17(capitalize));
+console.log(challenge17(capitalizeTheLast));
