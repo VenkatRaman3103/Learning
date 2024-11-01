@@ -322,3 +322,32 @@ console.log(challenge15());
 console.log(challenge15());
 console.log(challenge15());
 console.log(challenge15());
+
+// challenge: 16
+function average() {
+	let sum = 0;
+
+	let counter = 0;
+
+	function updateTheAvrage(num) {
+		if (num == undefined) {
+			return sum / counter;
+		}
+
+		sum = sum + num;
+		counter = counter + 1;
+
+		return sum / counter;
+	}
+
+	return updateTheAvrage;
+}
+
+const challenge16 = average();
+
+console.log(challenge16(12));
+console.log(challenge16(12));
+console.log(challenge16(12));
+console.log(challenge16());
+console.log(challenge16(8));
+console.log(challenge16(6));
