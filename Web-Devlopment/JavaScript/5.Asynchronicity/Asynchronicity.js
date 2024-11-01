@@ -70,28 +70,27 @@
 // everyXsecsForYsecs(sayHi, 1000, 5000)
 
 // challenge: 7
-function delayCounter(target, wait) {
+// function delayCounter(target, wait) {
+// 	let number = 0;
+//
+// 	function printNumber() {
+// 		let intervalID;
+//
+// 		intervalID = setInterval(() => {
+// 			number++;
+//
+// 			console.log(number);
+//
+// 			if (number >= target) {
+// 				clearInterval(intervalID);
+// 			}
+// 		}, wait);
+// 	}
+//
+// 	return printNumber;
+// }
+//
+// const challenge7 = delayCounter(5, 1000);
+//
+// challenge7();
 
-    let number = 0
-
-    function printNumber() {
-
-        let intervalID;
-
-        intervalID = setInterval(() => {
-            number++
-
-            console.log(number)
-
-            if(number >= target){
-                clearInterval(intervalID)
-            }
-        }, wait)
-    }
-
-    return printNumber
-}
-
-const challenge6 = delayCounter(5, 1000)
-
-challenge6()
