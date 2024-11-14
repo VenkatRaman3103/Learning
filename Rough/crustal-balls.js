@@ -11,10 +11,12 @@ function breaks(breaks) {
 
 	i -= rate;
 
-	for (let j = 0; j <= rate && i < breaks.length; j++, i++) {
+	for (let j = 0; j <= rate && i < breaks.length; j++) {
 		if (breaks[i]) {
 			return i;
 		}
+
+		i++;
 	}
 
 	return -1;
