@@ -15,3 +15,9 @@ print(option_one)
 print(option_two)
 print(option_three)
 print(option_four)
+
+
+# question 3
+def get_cost(sqft_walls, sqft_ceiling, sqft_per_gallon, cost_per_gallon):
+    cost = ((sqft_walls + sqft_ceiling) / sqft_per_gallon) * cost_per_gallon
+    return cost
