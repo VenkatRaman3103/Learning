@@ -32,8 +32,8 @@ print(False + True + True + True)  # 3
 
 
 def cost_of_project(engraving, solid_gold):
-    cost = ((solid_gold * 100) + ((len(engraving) * solid_gold) * 10)) + (
-        not solid_gold * 50 + ((len(engraving) * solid_gold) * 7)
+    cost = solid_gold * (100 + 10 * len(engraving)) + (not solid_gold) * (
+        50 + 7 * len(engraving)
     )
     return cost
 
