@@ -20,21 +20,27 @@ class LinkedList {
 		if (this.head == null) {
 			this.head = newNode;
 		} else {
-			console.log(this.head);
 			this.tail.next = newNode;
 		}
 
 		this.tail = newNode;
-
-		return this.head;
 	}
 
 	prepend(value) {
 		const newNode = new Node(value);
 		newNode.next = this.head;
 		this.head = newNode;
+	}
 
-		return this.head;
+	serialize() {
+		let arr = [];
+		let current = this.head;
+
+		while (current) {
+			arr.push(current.value);
+			current = current.next;
+		}
+		return arr;
 	}
 }
 
@@ -44,3 +50,4 @@ newLink.push(12);
 newLink.push(24);
 newLink.prepend(9);
 newLink.push(36);
+console.log(newLink.serialize());
