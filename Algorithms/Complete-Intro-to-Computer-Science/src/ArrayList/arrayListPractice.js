@@ -1,5 +1,3 @@
-import { data } from "browserslist";
-
 export class ArrayList {
 	constructor() {
 		this.data = {};
@@ -26,6 +24,22 @@ export class ArrayList {
 		return this.data;
 	}
 
+	// insert an element to the data based on the index, move all the element one step from that index
+	insert(index, value) {
+		if (index > this.length - 1) {
+			return "Exceed the length";
+		}
+
+		for (let i = this.length - 1; i >= index; i--) {
+			const key = this.data[i];
+			this.data[i + 1] = key;
+		}
+		this.data[index] = value;
+		this.length++;
+
+		return this.data;
+	}
+
 	// get value by index
 	get(index) {
 		return this.data[index];
@@ -47,9 +61,3 @@ export class ArrayList {
 		return arr;
 	}
 }
-
-// const testData = [1, 2, 3, 4, 5, 6];
-//
-// for (let i = testData.length - 1; i >= 0; i--) {
-// 	console.log(testData[i]);
-// }

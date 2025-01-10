@@ -30,8 +30,8 @@ describe("Test Suite on ArrayList", () => {
 	it("should append the value", () => {
 		const value = 12;
 
-		expect(arrayList.push(value)).toEqual({ 0: 12 });
-		expect(arrayList.push(value)).toEqual({ 0: 12, 1: 12 });
+		expect(arrayList.push(value)).toStrictEqual({ 0: 12 });
+		expect(arrayList.push(value)).toStrictEqual({ 0: 12, 1: 12 });
 		expect(arrayList.length).toBe(2);
 	});
 
@@ -39,7 +39,7 @@ describe("Test Suite on ArrayList", () => {
 		const value = 24;
 		arrayList.push(value);
 
-		expect(arrayList.peak()).toEqual({ 0: value });
+		expect(arrayList.peak()).toStrictEqual({ 0: value });
 	});
 
 	it("should print an array out of data", () => {
@@ -48,8 +48,8 @@ describe("Test Suite on ArrayList", () => {
 			arrayList.push(key);
 		}
 
-		expect(arrayList.peak()).toEqual(expectedData);
-		expect(arrayList.serialize()).toEqual(testData);
+		expect(arrayList.peak()).toStrictEqual(expectedData);
+		expect(arrayList.serialize()).toStrictEqual(testData);
 	});
 
 	it("should return the element, based on the index", () => {
@@ -67,10 +67,30 @@ describe("Test Suite on ArrayList", () => {
 			arrayList.push(key);
 		}
 
-		expect(arrayList.prepend(12)).toEqual({
+		expect(arrayList.prepend(12)).toStrictEqual({
 			0: 12,
 			1: 1,
 			2: 2,
+			3: 3,
+			4: 4,
+			5: 5,
+			6: 6,
+		});
+	});
+
+	it("should insert the element at given index", () => {
+		for (let i = 0; i < testData.length; i++) {
+			const key = testData[i];
+			arrayList.push(key);
+		}
+
+		const index = 2;
+		const value = 12;
+
+		expect(arrayList.insert(index, value)).toStrictEqual({
+			0: 1,
+			1: 2,
+			2: 12,
 			3: 3,
 			4: 4,
 			5: 5,
