@@ -74,4 +74,16 @@ describe("Test suite on LinkedList", () => {
 		expect(linkedList.serialize()).toStrictEqual([12, 24, 96, 36, 48]);
 		expect(linkedList.length).toBe(5);
 	});
+
+	it("should delete the value at given index", () => {
+		linkedList.push(12);
+		linkedList.push(24);
+		linkedList.push(36);
+		linkedList.push(48);
+
+		linkedList.delete(2);
+
+		expect(linkedList.serialize()).toStrictEqual([12, 24, 48]);
+		expect(linkedList.length).toBe(3);
+	});
 });

@@ -55,6 +55,7 @@ export class LinkedList {
 		}
 
 		if (index == 0) {
+			newNode.next = this.head;
 			this.head = newNode;
 		} else {
 			let currentNode = this.head;
@@ -72,6 +73,31 @@ export class LinkedList {
 		}
 
 		this.length++;
+	}
+
+	// delete the value based on index
+	delete(index) {
+		if (index < 0 || index > this.length - 1) {
+			return "Invalid Index";
+		}
+
+		if (index === 0) {
+			this.head = this.head.next;
+		} else {
+			let currentNode = this.head;
+			let previous = null;
+			let i = 0;
+
+			while (i < index) {
+				previous = currentNode;
+				currentNode = currentNode.next;
+				i++;
+			}
+
+			previous.next = currentNode.next;
+		}
+
+		this.length--;
 	}
 
 	// get value by index
@@ -137,5 +163,5 @@ export class Node {
 // linkedList.push(24);
 // linkedList.push(36);
 // linkedList.push(48);
+// linkedList.delete(3);
 // console.log(linkedList.serialize());
-// console.log(linkedList.get(2));
