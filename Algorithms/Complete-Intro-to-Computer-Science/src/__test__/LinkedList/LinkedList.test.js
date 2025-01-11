@@ -60,5 +60,18 @@ describe("Test suite on LinkedList", () => {
 		linkedList.pop();
 
 		expect(linkedList.serialize()).toStrictEqual([12, 24, 36]);
+		expect(linkedList.length).toBe(3);
+	});
+
+	it("should insert the element into the linkedList at given position", () => {
+		linkedList.push(12);
+		linkedList.push(24);
+		linkedList.push(36);
+		linkedList.push(48);
+
+		linkedList.insert(2, 96);
+
+		expect(linkedList.serialize()).toStrictEqual([12, 24, 96, 36, 48]);
+		expect(linkedList.length).toBe(5);
 	});
 });

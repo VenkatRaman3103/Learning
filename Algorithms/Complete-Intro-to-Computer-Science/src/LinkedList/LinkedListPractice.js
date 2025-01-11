@@ -46,6 +46,34 @@ export class LinkedList {
 		this.length--;
 	}
 
+	// insert an value at the given index
+	insert(index, value) {
+		const newNode = new Node(value);
+
+		if (index < 0 || index > this.length) {
+			return "Invalid Index";
+		}
+
+		if (index == 0) {
+			this.head = newNode;
+		} else {
+			let currentNode = this.head;
+			let previous = null;
+			let i = 0;
+
+			while (i < index) {
+				previous = currentNode;
+				currentNode = currentNode.next;
+				i++;
+			}
+
+			previous.next = newNode;
+			newNode.next = currentNode;
+		}
+
+		this.length++;
+	}
+
 	// get value by index
 	get(index) {
 		if (this.head == null) {
