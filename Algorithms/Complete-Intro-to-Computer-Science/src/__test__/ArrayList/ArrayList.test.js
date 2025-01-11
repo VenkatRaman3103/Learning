@@ -1,4 +1,4 @@
-import { ArrayList } from "../../ArrayList/arrayListPractice";
+import { ArrayList } from "../../Lists/ArrayList/ArrayList";
 
 describe("Test Suite on ArrayList", () => {
 	let arrayList;

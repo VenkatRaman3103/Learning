@@ -1,4 +1,4 @@
-import { LinkedList, Node } from "../../LinkedList/LinkedListPractice";
+import { LinkedList, Node } from "../../Lists/LinkedList/LinkedList";
 
 describe("Test suite on LinkedList", () => {
 	let linkedList;
