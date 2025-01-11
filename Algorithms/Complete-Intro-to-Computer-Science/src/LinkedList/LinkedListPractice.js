@@ -29,16 +29,11 @@ export class LinkedList {
 			return "Index exceeds the length";
 		}
 
-		let currentNode = this.head;
+		const getValue = this.#find(index);
+		console.log(getValue);
 
-		let i = 0;
-
-		while (currentNode) {
-			if (i === index) {
-				return currentNode.value;
-			}
-			currentNode = currentNode.next;
-			i++;
+		if (getValue) {
+			return getValue;
 		}
 	}
 
@@ -54,6 +49,25 @@ export class LinkedList {
 		}
 
 		return arr;
+	}
+
+	// private methods
+
+	// find the element
+	#find(index) {
+		let currentNode = this.head;
+
+		let i = 0;
+
+		while (currentNode) {
+			if (i === index) {
+				return currentNode.value;
+			}
+			currentNode = currentNode.next;
+			i++;
+		}
+
+		return null;
 	}
 }
 

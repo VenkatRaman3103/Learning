@@ -41,4 +41,13 @@ describe("Test suite on LinkedList", () => {
 		expect(linkedList.serialize()).toStrictEqual([12, 24, 36, 48]);
 		expect(linkedList.length).toBe(4);
 	});
+
+	it("should return the value based on the given index", () => {
+		linkedList.push(12);
+		linkedList.push(24);
+		linkedList.push(36);
+		linkedList.push(48);
+
+		expect(linkedList.get(2)).toBe(36);
+	});
 });
