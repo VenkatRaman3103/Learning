@@ -19,8 +19,42 @@ export class LinkedList {
 		this.length++;
 	}
 
+	// get value by index
+	get(index) {
+		if (this.head == null) {
+			return "List is empty";
+		}
+
+		if (index > this.length - 1) {
+			return "Index exceeds the length";
+		}
+
+		let currentNode = this.head;
+
+		let i = 0;
+
+		while (currentNode) {
+			if (i === index) {
+				return currentNode.value;
+			}
+			currentNode = currentNode.next;
+			i++;
+		}
+	}
+
 	// make an array out of linkedList
-	serialize() {}
+	serialize() {
+		const arr = [];
+
+		let currentNode = this.head;
+
+		while (currentNode) {
+			arr.push(currentNode.value);
+			currentNode = currentNode.next;
+		}
+
+		return arr;
+	}
 }
 
 export class Node {
@@ -35,5 +69,5 @@ export class Node {
 // linkedList.push(24);
 // linkedList.push(36);
 // linkedList.push(48);
-// console.log(linkedList.head);
-// console.log(linkedList.tail);
+// console.log(linkedList.serialize());
+// console.log(linkedList.get(2));
