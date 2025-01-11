@@ -19,6 +19,33 @@ export class LinkedList {
 		this.length++;
 	}
 
+	// delte the last element
+	pop() {
+		if (this.head == null) {
+			return "List is empty";
+		}
+
+		if (this.head.next == null) {
+			const value = this.head.value;
+			this.head = null;
+
+			this.length--;
+
+			return value;
+		}
+
+		let currentNode = this.head;
+		let previous = null;
+
+		while (currentNode.next !== null) {
+			previous = currentNode;
+			currentNode = currentNode.next;
+		}
+		previous.next = null;
+
+		this.length--;
+	}
+
 	// get value by index
 	get(index) {
 		if (this.head == null) {
@@ -30,7 +57,6 @@ export class LinkedList {
 		}
 
 		const getValue = this.#find(index);
-		console.log(getValue);
 
 		if (getValue) {
 			return getValue;
@@ -51,7 +77,7 @@ export class LinkedList {
 		return arr;
 	}
 
-	// private methods
+	//---- private methods ----
 
 	// find the element
 	#find(index) {

@@ -50,4 +50,15 @@ describe("Test suite on LinkedList", () => {
 
 		expect(linkedList.get(2)).toBe(36);
 	});
+
+	it("should remove the last element", () => {
+		linkedList.push(12);
+		linkedList.push(24);
+		linkedList.push(36);
+		linkedList.push(48);
+
+		linkedList.pop();
+
+		expect(linkedList.serialize()).toStrictEqual([12, 24, 36]);
+	});
 });
