@@ -100,9 +100,11 @@ class AVLTree {
 					this.root = this.rotateRight(current);
 				} else {
 					let parent = stack[stack.length - 1];
-					if (parent.left === current)
+					if (parent.left === current) {
 						parent.left = this.rotateRight(current);
-					else parent.right = this.rotateRight(current);
+					} else {
+						parent.right = this.rotateRight(current);
+					}
 				}
 			} else if (balance < -1 && key > current.right.key) {
 				// Right-Right case

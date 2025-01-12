@@ -8,13 +8,31 @@ export class Tree {
 
 		if (this.root == null) {
 			this.root = newNode;
+			return;
 		}
 
-		if (value > this.root.value) {
-			this.root.right = newNode;
-		} else {
-			this.root.left = newNode;
+		let currentNode = this.root;
+
+		while (true) {
+			if (value < currentNode.value) {
+				if (currentNode.left == null) {
+					currentNode.left = newNode;
+					break;
+				}
+				currentNode = currentNode.left;
+			} else if (value >= currentNode.value) {
+				if (currentNode.right == null) {
+					currentNode.right = newNode;
+					break;
+				}
+				currentNode = currentNode.right;
+			}
 		}
+	}
+
+	print() {
+		console.log(JSON.stringify(this.root, null, 4));
+		return this.root;
 	}
 }
 
@@ -25,3 +43,14 @@ export class Node {
 		this.right = null;
 	}
 }
+
+const tree = new Tree();
+tree.add(6);
+tree.add(3);
+tree.add(9);
+tree.add(2);
+tree.add(5);
+tree.add(4);
+tree.add(7);
+console.log(tree.root);
+tree.print();

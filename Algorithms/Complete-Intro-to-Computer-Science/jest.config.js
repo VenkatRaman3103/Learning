@@ -1,4 +1,4 @@
-module.exports = {
+export default {
 	testEnvironment: "node",
 	testMatch: ["**/__test__/**/*.test.js"], // Specify test folder and file pattern
 	transform: {
