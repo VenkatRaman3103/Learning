@@ -1,15 +1,15 @@
 class Node {
 	constructor(key) {
-		this.key = key; // Value of the node
-		this.left = null; // Left child
-		this.right = null; // Right child
-		this.height = 1; // Height of the node
+		this.key = key;
+		this.left = null;
+		this.right = null;
+		this.height = 1;
 	}
 }
 
 class AVLTree {
 	constructor() {
-		this.root = null; // Root of the tree
+		this.root = null;
 	}
 
 	// Get height of a node
@@ -47,19 +47,18 @@ class AVLTree {
 
 	// Insert a key iteratively
 	add(key) {
-		let stack = []; // To keep track of the path
+		let stack = [];
 		let node = this.root;
 		let newNode = new Node(key);
 
-		// If tree is empty
 		if (!this.root) {
 			this.root = newNode;
 			return;
 		}
 
-		// Traverse the tree to find the correct position
+		// Traverse to find the position
 		while (node) {
-			stack.push(node); // Keep track of visited nodes
+			stack.push(node);
 			if (key < node.key) {
 				if (!node.left) {
 					node.left = newNode;
@@ -73,79 +72,65 @@ class AVLTree {
 				}
 				node = node.right;
 			} else {
-				// Duplicate keys are not allowed
-				return;
+				return; // No duplicates
 			}
 		}
 
-		// Backtrack to rebalance the tree
+		// Rebalance
 		while (stack.length) {
 			let current = stack.pop();
 
-			// Update height
 			current.height =
 				Math.max(
 					this.getHeight(current.left),
 					this.getHeight(current.right),
 				) + 1;
-
-			// Get balance factor
 			const balance =
 				this.getHeight(current.left) - this.getHeight(current.right);
 
-			// Balance the tree
 			if (balance > 1 && key < current.left.key) {
-				// Left-Left case
-				if (stack.length === 0) {
-					this.root = this.rotateRight(current);
-				} else {
-					let parent = stack[stack.length - 1];
-					if (parent.left === current) {
-						parent.left = this.rotateRight(current);
-					} else {
-						parent.right = this.rotateRight(current);
-					}
-				}
+				if (stack.length === 0) this.root = this.rotateRight(current);
+				else
+					stack[stack.length - 1].left === current
+						? (stack[stack.length - 1].left =
+								this.rotateRight(current))
+						: (stack[stack.length - 1].right =
+								this.rotateRight(current));
 			} else if (balance < -1 && key > current.right.key) {
-				// Right-Right case
-				if (stack.length === 0) {
-					this.root = this.rotateLeft(current);
-				} else {
-					let parent = stack[stack.length - 1];
-					if (parent.left === current)
-						parent.left = this.rotateLeft(current);
-					else parent.right = this.rotateLeft(current);
-				}
+				if (stack.length === 0) this.root = this.rotateLeft(current);
+				else
+					stack[stack.length - 1].left === current
+						? (stack[stack.length - 1].left =
+								this.rotateLeft(current))
+						: (stack[stack.length - 1].right =
+								this.rotateLeft(current));
 			} else if (balance > 1 && key > current.left.key) {
-				// Left-Right case
 				current.left = this.rotateLeft(current.left);
-				if (stack.length === 0) {
-					this.root = this.rotateRight(current);
-				} else {
-					let parent = stack[stack.length - 1];
-					if (parent.left === current)
-						parent.left = this.rotateRight(current);
-					else parent.right = this.rotateRight(current);
-				}
+				if (stack.length === 0) this.root = this.rotateRight(current);
+				else
+					stack[stack.length - 1].left === current
+						? (stack[stack.length - 1].left =
+								this.rotateRight(current))
+						: (stack[stack.length - 1].right =
+								this.rotateRight(current));
 			} else if (balance < -1 && key < current.right.key) {
-				// Right-Left case
 				current.right = this.rotateRight(current.right);
-				if (stack.length === 0) {
-					this.root = this.rotateLeft(current);
-				} else {
-					let parent = stack[stack.length - 1];
-					if (parent.left === current)
-						parent.left = this.rotateLeft(current);
-					else parent.right = this.rotateLeft(current);
-				}
+				if (stack.length === 0) this.root = this.rotateLeft(current);
+				else
+					stack[stack.length - 1].left === current
+						? (stack[stack.length - 1].left =
+								this.rotateLeft(current))
+						: (stack[stack.length - 1].right =
+								this.rotateLeft(current));
 			}
 		}
 	}
 
-	// In-order traversal without recursion
+	// In-order traversal (iterative)
 	inOrder() {
 		let stack = [];
 		let node = this.root;
+		const result = [];
 
 		while (stack.length || node) {
 			while (node) {
@@ -154,19 +139,66 @@ class AVLTree {
 			}
 
 			node = stack.pop();
-			console.log(node.key);
+			result.push(node.key);
 			node = node.right;
 		}
+
+		console.log("In-order:", result);
+	}
+
+	// Pre-order traversal (iterative)
+	preOrder() {
+		if (!this.root) return;
+
+		let stack = [this.root];
+		const result = [];
+
+		while (stack.length) {
+			let node = stack.pop();
+			result.push(node.key);
+
+			// Push right before left to ensure left is processed first
+			if (node.right) stack.push(node.right);
+			if (node.left) stack.push(node.left);
+		}
+
+		console.log("Pre-order:", result);
+	}
+
+	// Post-order traversal (iterative)
+	postOrder() {
+		if (!this.root) return;
+
+		let stack1 = [this.root];
+		let stack2 = [];
+		const result = [];
+
+		while (stack1.length) {
+			let node = stack1.pop();
+			stack2.push(node);
+
+			if (node.left) stack1.push(node.left);
+			if (node.right) stack1.push(node.right);
+		}
+
+		while (stack2.length) {
+			result.push(stack2.pop().key);
+		}
+
+		console.log("Post-order:", result);
 	}
 }
 
 // Example usage
 const avl = new AVLTree();
-avl.add(10);
 avl.add(20);
+avl.add(10);
 avl.add(30);
-avl.add(40);
-avl.add(50);
+avl.add(5);
+avl.add(15);
+avl.add(25);
+avl.add(35);
 
-console.log("In-order traversal:");
-avl.inOrder();
+avl.inOrder(); // Output: In-order: [5, 10, 15, 20, 25, 30, 35]
+avl.preOrder(); // Output: Pre-order: [20, 10, 5, 15, 30, 25, 35]
+avl.postOrder(); // Output: Post-order: [5, 15, 10, 25, 35, 30, 20]

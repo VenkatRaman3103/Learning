@@ -17,7 +17,7 @@ export class AvlTree {
 			Math.max(this.getHeight(x.left), this.getHeight(x.right)) + 1;
 
 		y.height =
-			Math.max(this.getHeight(y.left), this.getHeight(y.right)) + 1;
+			Math.min(this.getHeight(y.left), this.getHeight(y.right)) + 1;
 
 		return y;
 	}
@@ -114,7 +114,7 @@ export class AvlTree {
 						parent.right = this.rotateRight(current);
 					}
 				}
-			} else if (balance < -1 && value > current.right.value) {
+			} else if (balance < -1 && value < current.right.value) {
 				// Right - Left
 				current.right = this.rotateRight(current.right); // to right
 
@@ -130,6 +130,33 @@ export class AvlTree {
 				}
 			}
 		}
+	}
+
+	inOrder(node, result = []) {
+		if (node) {
+			this.inOrder(node.left, result);
+			result.push(node.value);
+			this.inOrder(node.right, result);
+		}
+		return result;
+	}
+
+	preOrder(node, result = []) {
+		if (node) {
+			result.push(node.value);
+			this.preOrder(node.left, result);
+			this.preOrder(node.right, result);
+		}
+		return result;
+	}
+
+	postOrder(node, result = []) {
+		if (node) {
+			this.postOrder(node.left, result);
+			this.postOrder(node.right, result);
+			result.push(node.value);
+		}
+		return result;
 	}
 
 	print() {
@@ -156,3 +183,6 @@ avlTree.add(12);
 avlTree.add(24);
 avlTree.add(6);
 console.log(avlTree.print());
+console.log(avlTree.inOrder(avlTree.root));
+console.log(avlTree.preOrder(avlTree.root));
+console.log(avlTree.postOrder(avlTree.root));
