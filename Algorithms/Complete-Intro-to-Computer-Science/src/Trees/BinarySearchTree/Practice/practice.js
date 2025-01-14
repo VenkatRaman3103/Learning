@@ -11,28 +11,29 @@ export class Tree {
 			return;
 		}
 
-		let currentNode = this.root;
+		let current = this.root;
 
 		while (true) {
-			if (value < currentNode.value) {
-				if (currentNode.left == null) {
-					currentNode.left = newNode;
+			if (value < current.value) {
+				if (current.left == null) {
+					current.left = newNode;
 					break;
 				}
-				currentNode = currentNode.left;
-			} else if (value >= currentNode.value) {
-				if (currentNode.right == null) {
-					currentNode.right = newNode;
+				current = current.left;
+			} else if (current.value < value) {
+				if (current.right == null) {
+					current.right = newNode;
 					break;
 				}
-				currentNode = currentNode.right;
+				current = current.right;
+			} else {
+				break;
 			}
 		}
 	}
 
 	print() {
-		console.log(JSON.stringify(this.root, null, 4));
-		return this.root;
+		return console.log(JSON.stringify(this.root, null, 4));
 	}
 }
 
@@ -46,7 +47,7 @@ export class Node {
 
 const tree = new Tree();
 
-function passTheArray(arr) {
+function passAnArray(arr) {
 	for (let i = 0; i < arr.length; i++) {
 		const key = arr[i];
 
@@ -54,6 +55,5 @@ function passTheArray(arr) {
 	}
 }
 
-passTheArray([4, 2, 3, 1, 5]);
-
+passAnArray([4, 3, 2, 1, 5, 6]);
 tree.print();

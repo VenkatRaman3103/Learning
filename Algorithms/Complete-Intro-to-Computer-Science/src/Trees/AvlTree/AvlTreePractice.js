@@ -100,7 +100,7 @@ export class AvlTree {
 						parent.left = this.rotateRight(current);
 					}
 				}
-			} else if (balance > 1 && current.left.value) {
+			} else if (balance > 1 && value > current.left.value) {
 				// Left - Right
 				current.left = this.rotateLeft(current.left); // to left
 				if (stack.length == 0) {
