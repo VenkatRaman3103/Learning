@@ -74,6 +74,64 @@ describe("AvlTree", () => {
 		expect(tree.root.right.right.value).toBe(50);
 	});
 
+	test("should reject duplicate values", () => {
+		tree.add(10);
+		tree.add(10); // Duplicate
+
+		const inOrder = tree.inOrder(tree.root);
+		expect(inOrder).toEqual([10]);
+	});
+
+	test("should handle negative values", () => {
+		tree.add(-10);
+		tree.add(-20);
+		tree.add(-5);
+		tree.add(-15);
+		tree.add(-30);
+		tree.add(-25);
+
+		expect(tree.root.value).toBe(-10);
+		expect(tree.root.left.value).toBe(-20);
+		expect(tree.root.right.value).toBe(-5);
+		expect(tree.root.left.left.value).toBe(-30);
+		expect(tree.root.left.right.value).toBe(-15);
+		expect(tree.root.right.left.value).toBe(-25);
+	});
+
+	test("should handle sorted insertions that cause imbalance", () => {
+		tree.add(10);
+		tree.add(20);
+		tree.add(30);
+		tree.add(40);
+		tree.add(50);
+		tree.add(60);
+
+		expect(tree.root.value).toBe(30);
+		expect(tree.root.left.value).toBe(20);
+		expect(tree.root.right.value).toBe(50);
+		expect(tree.root.left.left.value).toBe(10);
+		expect(tree.root.left.right.value).toBe(25);
+		expect(tree.root.right.left.value).toBe(40);
+		expect(tree.root.right.right.value).toBe(60);
+	});
+
+	test("should handle reverse sorted insertions", () => {
+		tree.add(60);
+		tree.add(50);
+		tree.add(40);
+		tree.add(30);
+		tree.add(20);
+		tree.add(10);
+
+		expect(tree.root.value).toBe(30);
+		expect(tree.root.left.value).toBe(20);
+		expect(tree.root.right.value).toBe(50);
+		expect(tree.root.left.left.value).toBe(10);
+		expect(tree.root.left.right.value).toBe(25);
+		expect(tree.root.right.left.value).toBe(40);
+		expect(tree.root.right.right.value).toBe(60);
+	});
+
 	test("should return in-order traversal of the tree", () => {
 		tree.add(30);
 		tree.add(10);
@@ -101,11 +159,39 @@ describe("AvlTree", () => {
 		expect(postOrder).toEqual([10, 30, 20]);
 	});
 
-	test("should reject duplicate values", () => {
-		tree.add(10);
-		tree.add(10); // Duplicate
+	test("should handle deep tree balancing (multiple rotations)", () => {
+		tree.add(1);
+		tree.add(2);
+		tree.add(3);
+		tree.add(4);
+		tree.add(5);
+		tree.add(6);
+		tree.add(7); // Multiple rotations required
 
-		const inOrder = tree.inOrder(tree.root);
-		expect(inOrder).toEqual([10]);
+		expect(tree.root.value).toBe(4);
+		expect(tree.root.left.value).toBe(2);
+		expect(tree.root.right.value).toBe(6);
+		expect(tree.root.left.left.value).toBe(1);
+		expect(tree.root.left.right.value).toBe(3);
+		expect(tree.root.right.left.value).toBe(5);
+		expect(tree.root.right.right.value).toBe(7);
+	});
+
+	test("should properly balance the tree for mixed insertions", () => {
+		tree.add(10);
+		tree.add(20);
+		tree.add(30);
+		tree.add(15);
+		tree.add(25);
+		tree.add(5);
+		tree.add(35);
+
+		expect(tree.root.value).toBe(20);
+		expect(tree.root.left.value).toBe(10);
+		expect(tree.root.right.value).toBe(30);
+		expect(tree.root.left.left.value).toBe(5);
+		expect(tree.root.left.right.value).toBe(15);
+		expect(tree.root.right.left.value).toBe(25);
+		expect(tree.root.right.right.value).toBe(35);
 	});
 });

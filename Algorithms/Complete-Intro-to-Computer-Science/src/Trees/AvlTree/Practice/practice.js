@@ -7,7 +7,7 @@ export class AvlTree {
 		return node ? node.height : 0;
 	}
 
-	rotateRigt(x) {
+	rotateRigth(x) {
 		let y = x.left;
 		x.left = y.right;
 		y.right = x;
@@ -80,13 +80,13 @@ export class AvlTree {
 				// left - left
 
 				if (stack.length == 0) {
-					this.root = this.rotateRigt(current);
+					this.root = this.rotateRigth(current);
 				} else {
 					const parent = stack[stack.length - 1];
 					if (parent.left == current) {
-						parent.left = this.rotateRigt(current);
+						parent.left = this.rotateRigth(current);
 					} else {
-						parent.right = this.rotateRigt(current);
+						parent.right = this.rotateRigth(current);
 					}
 				}
 			} else if (balanceFactor < -1 && value > current.right.value) {
@@ -105,18 +105,18 @@ export class AvlTree {
 				// left - right
 				current.left = this.rotateLeft(current.left);
 				if (stack.length == 0) {
-					this.root = this.rotateRigt(current);
+					this.root = this.rotateRigth(current);
 				} else {
 					const parent = stack[stack.length - 1];
 					if (parent.left == current) {
-						parent.left = this.rotateRigt(current);
+						parent.left = this.rotateRigth(current);
 					} else {
-						parent.right = this.rotateRigt(current);
+						parent.right = this.rotateRigth(current);
 					}
 				}
 			} else if (balanceFactor < -1 && current.right.value > value) {
 				// right - left
-				current.right = this.rotateRigt(current.right);
+				current.right = this.rotateRigth(current.right);
 				if (stack.length == 0) {
 					this.root = this.rotateLeft(current);
 				} else {
@@ -132,6 +132,7 @@ export class AvlTree {
 	}
 
 	// traversals
+	// Depth First Search
 	inOrder(node, result = []) {
 		// left -> root -> right
 		if (node) {
@@ -160,6 +161,30 @@ export class AvlTree {
 			this.postOrder(node.left, result);
 			this.postOrder(node.right, result);
 			result.push(node.value);
+		}
+
+		return result;
+	}
+
+	// Breat First Search
+	breadthFirstSearch() {
+		if (this.root == null) {
+			return [];
+		}
+
+		const queue = [this.root];
+		const result = [];
+
+		while (queue.length > 0) {
+			const node = queue.shift();
+			result.push(node.value);
+
+			if (node.left !== null) {
+				queue.push(node.left);
+			}
+			if (node.right !== null) {
+				queue.push(node.right);
+			}
 		}
 
 		return result;
