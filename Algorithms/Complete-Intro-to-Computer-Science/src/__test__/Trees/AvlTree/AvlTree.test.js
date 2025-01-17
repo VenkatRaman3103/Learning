@@ -1,4 +1,4 @@
-import { AvlTree } from "../../../Trees/AvlTree/Practice/practice";
+import { AvlTree } from "../../../Trees/AvlTree/practice/practice2";
 
 describe("AvlTree", () => {
 	let tree;
