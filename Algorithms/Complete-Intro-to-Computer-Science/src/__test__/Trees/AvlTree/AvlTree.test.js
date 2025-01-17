@@ -194,4 +194,18 @@ describe("AvlTree", () => {
 		expect(tree.root.right.left.value).toBe(25);
 		expect(tree.root.right.right.value).toBe(35);
 	});
+
+	test("should make the  tree into bfs array", () => {
+		tree.add(10);
+		tree.add(20);
+		tree.add(30);
+		tree.add(15);
+		tree.add(25);
+		tree.add(5);
+		tree.add(35);
+
+		expect(tree.breadFirstSearch()).toStrictEqual([
+			20, 10, 30, 5, 15, 25, 35,
+		]);
+	});
 });

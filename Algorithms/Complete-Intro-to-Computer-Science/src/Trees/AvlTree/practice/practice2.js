@@ -132,6 +132,30 @@ export class AvlTree {
 			node.value,
 		];
 	}
+
+	breadFirstSearch() {
+		if (this.root == null) {
+			return [];
+		}
+
+		let queue = [this.root];
+		let result = [];
+
+		while (queue.length > 0) {
+			const node = queue.shift();
+			result.push(node.value);
+
+			if (node.left !== null) {
+				queue.push(node.left);
+			}
+
+			if (node.right !== null) {
+				queue.push(node.right);
+			}
+		}
+
+		return result;
+	}
 }
 
 export class Node {
