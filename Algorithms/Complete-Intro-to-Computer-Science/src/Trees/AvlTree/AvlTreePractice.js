@@ -63,7 +63,7 @@ export class AvlTree {
 			}
 		}
 
-		while (stack.length) {
+		while (stack.length > 0) {
 			const current = stack.pop();
 
 			current.height =

@@ -7,32 +7,41 @@ export class AvlTree {
 		return node ? node.height : 0;
 	}
 
-	rotateToLeft(a) {
-		let b = a.right;
-		a.right = b.left;
-		b.left = a;
+	rotateRight(a) {
+		const b = a.left;
+		a.left = b.right;
+		b.right = a;
 
-		// Recalculate heights after rotation
 		a.height =
 			Math.max(this.getHeight(a.left), this.getHeight(a.right)) + 1;
-		b.height =
-			Math.max(this.getHeight(b.left), this.getHeight(b.right)) + 1;
+		b.height = Math.max(this.getHeight(b.left), a.height) + 1;
 
 		return b;
 	}
 
-	rotateToRight(a) {
-		let b = a.left;
-		a.left = b.right;
-		b.right = a;
+	rotateLeft(a) {
+		const b = a.right;
+		a.right = b.left;
+		b.left = a;
 
-		// Recalculate heights after rotation
 		a.height =
 			Math.max(this.getHeight(a.left), this.getHeight(a.right)) + 1;
-		b.height =
-			Math.max(this.getHeight(b.left), this.getHeight(b.right)) + 1;
+		b.height = Math.max(this.getHeight(b.left), a.height) + 1;
 
 		return b;
+	}
+
+	handleRotation(current, stack, rotatedNode) {
+		if (stack.length === 0) {
+			this.root = rotatedNode;
+		} else {
+			const parent = stack[stack.length - 1];
+			if (parent.left === current) {
+				parent.left = rotatedNode;
+			} else {
+				parent.right = rotatedNode;
+			}
+		}
 	}
 
 	add(value) {
@@ -55,87 +64,73 @@ export class AvlTree {
 					break;
 				}
 				traverse = traverse.left;
-			} else if (traverse.value < value) {
+			} else if (value > traverse.value) {
 				if (traverse.right == null) {
 					traverse.right = newNode;
 					break;
 				}
 				traverse = traverse.right;
 			} else {
-				return; // No duplicate values
+				// Duplicate value
+				return;
 			}
 		}
 
-		// Update heights and check for balancing
 		while (stack.length > 0) {
-			let current = stack.pop();
+			const current = stack.pop();
 
-			// Update height after insertion
 			current.height =
 				Math.max(
 					this.getHeight(current.left),
 					this.getHeight(current.right),
 				) + 1;
 
-			// Get the balance factor
 			const balance =
 				this.getHeight(current.left) - this.getHeight(current.right);
 
-			// Left-Left Case
 			if (balance > 1 && value < current.left.value) {
-				if (stack.length == 0) {
-					this.root = this.rotateToRight(current);
-				} else {
-					let parent = stack[stack.length - 1];
-					if (parent.left == current) {
-						parent.left = this.rotateToRight(current);
-					} else {
-						parent.right = this.rotateToRight(current);
-					}
-				}
-			}
-			// Right-Right Case
-			else if (balance < -1 && value > current.right.value) {
-				if (stack.length == 0) {
-					this.root = this.rotateToLeft(current);
-				} else {
-					let parent = stack[stack.length - 1];
-					if (parent.right == current) {
-						parent.right = this.rotateToLeft(current);
-					} else {
-						parent.left = this.rotateToLeft(current);
-					}
-				}
-			}
-			// Left-Right Case
-			else if (balance > 1 && current.left.value < value) {
-				current.left = this.rotateToLeft(current.left);
-				if (stack.length == 0) {
-					this.root = this.rotateToRight(current);
-				} else {
-					let parent = stack[stack.length - 1];
-					if (parent.left == current) {
-						parent.left = this.rotateToRight(current);
-					} else {
-						parent.right = this.rotateToRight(current);
-					}
-				}
-			}
-			// Right-Left Case
-			else if (balance < -1 && current.right.value > value) {
-				current.right = this.rotateToRight(current.right);
-				if (stack.length == 0) {
-					this.root = this.rotateToLeft(current);
-				} else {
-					let parent = stack[stack.length - 1];
-					if (parent.right == current) {
-						parent.right = this.rotateToLeft(current);
-					} else {
-						parent.left = this.rotateToLeft(current);
-					}
-				}
+				// Left-Left
+				this.handleRotation(current, stack, this.rotateRight(current));
+			} else if (balance < -1 && value > current.right.value) {
+				// Right-Right
+				this.handleRotation(current, stack, this.rotateLeft(current));
+			} else if (balance > 1 && value > current.left.value) {
+				// Left-Right
+				current.left = this.rotateLeft(current.left);
+				this.handleRotation(current, stack, this.rotateRight(current));
+			} else if (balance < -1 && value < current.right.value) {
+				// Right-Left
+				current.right = this.rotateRight(current.right);
+				this.handleRotation(current, stack, this.rotateLeft(current));
 			}
 		}
+	}
+
+	inOrder(node) {
+		if (!node) return [];
+		return [
+			...this.inOrder(node.left),
+			node.value,
+			...this.inOrder(node.right),
+		];
+	}
+
+	preOrder(node) {
+		if (!node) return [];
+		return [
+			node.value,
+			...this.preOrder(node.left),
+			...this.preOrder(node.right),
+		];
+	}
+
+	postOrder(node) {
+		if (!node) return [];
+		return [
+			...this.postOrder(node.left),
+			...this.postOrder(node.right),
+			node.value,
+		];
 	}
 }
 
