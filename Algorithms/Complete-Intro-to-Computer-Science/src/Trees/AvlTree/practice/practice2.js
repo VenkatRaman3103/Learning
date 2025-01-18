@@ -106,6 +106,7 @@ export class AvlTree {
 		}
 	}
 
+	// inOrder also know as level order
 	inOrder(node) {
 		if (!node) return [];
 		return [
@@ -115,6 +116,7 @@ export class AvlTree {
 		];
 	}
 
+	// preOder also know as depth first search in binary tree
 	preOrder(node) {
 		if (!node) return [];
 		return [
