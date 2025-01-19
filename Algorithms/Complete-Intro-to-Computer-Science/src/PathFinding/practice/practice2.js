@@ -48,7 +48,11 @@ function setAndProcessNeighbor(visited, queue, point1, point2, iteration) {
 	return null;
 }
 
-function shortestPath(mave, [xa, ya], [xb, yb]) {
+export function shortestPath(mave, [xa, ya], [xb, yb]) {
+	if (xa === xb && ya === yb) {
+		return 0;
+	}
+
 	const visited = modelTheData(mave);
 
 	visited[ya][xa].openedBy = BY_A;
