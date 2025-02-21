@@ -5,11 +5,21 @@ import { Pizza } from "./Pizza";
 const App = () => {
     return (
         <div>
-            <Pizza heading={"heading 1"} description={"description 1"} />
-            <Pizza heading={"heading 2"} description={"description 2"} />
-            <Pizza heading={"heading 3"} description={"description 3"} />
-            <Pizza heading={"heading 4"} description={"description 4"} />
-            <Pizza heading={"heading 5"} description={"description 5"} />
+            <Pizza
+                heading={"heading 1"}
+                description={"description 1"}
+                image={"/public/pizzas/pepperoni.webp"}
+            />
+            <Pizza
+                heading={"heading 2"}
+                description={"description 2"}
+                image={"/public/pizzas/hawaiian.webp"}
+            />
+            <Pizza
+                heading={"heading 3"}
+                description={"description 3"}
+                image={"/public/pizzas/big_meat.webp"}
+            />
         </div>
     );
 };

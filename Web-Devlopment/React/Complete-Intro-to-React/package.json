@@ -23,7 +23,7 @@
         "eslint-plugin-react": "^7.37.1",
         "globals": "^15.15.0",
         "prettier": "^3.5.1",
-        "vite": "^0.10.3"
+        "vite": "^6.1.1"
     },
     "dependencies": {
         "react": "^18.3.1",
