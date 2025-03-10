@@ -19,5 +19,4 @@ export function bubbleSort(arr, n) {
 }
 
 const arr = [4, 3, 2, 5, 6, 7, 1, 9];
-
 console.log(bubbleSort(arr, arr.length));
