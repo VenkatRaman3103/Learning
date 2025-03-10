@@ -1,4 +1,6 @@
-import { bubbleSort, swap } from "../../Sorting/BubbleSort";
+// import { bubbleSort, swap } from "../../Sorting/BubbleSort";
+
+import { bubbleSort, swap } from "../../Sorting/BubbleSortPractise1";
 
 describe("BubbleSort", () => {
     it("should return sorted array", () => {
