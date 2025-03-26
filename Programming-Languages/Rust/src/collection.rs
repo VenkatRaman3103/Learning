@@ -42,3 +42,42 @@ pub fn arrays() {
         println!("{}", element)
     }
 }
+
+pub fn structs() {
+    struct Coordinates {
+        x: i32,
+        y: i32,
+        z: i32,
+    }
+
+    let plots: Coordinates = Coordinates {
+        x: 12,
+        y: 24,
+        z: 36,
+    };
+
+    println!("{}", plots.x);
+    println!("{}", plots.y);
+    println!("{}", plots.z);
+
+    let Coordinates { x, y, z } = plots;
+    println!("{}, {}, {}", x, y, z);
+
+    struct Object {
+        a: i32,
+    }
+
+    struct NesteObject {
+        a: i32,
+        object: Object,
+        array: [i32; 3],
+    }
+
+    let json: NesteObject = NesteObject {
+        a: 12,
+        object: Object { a: 24 },
+        array: [3, 6, 9],
+    };
+
+    println!("{}, {}, {}", json.a, json.object.a, json.array[0])
+}
