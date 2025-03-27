@@ -1,7 +1,12 @@
 mod collection;
+mod patterns;
 
 fn main() {
-    collection::tuple();
-    collection::arrays();
-    collection::structs();
+    // collections
+    // collection::tuple();
+    // collection::arrays();
+    // collection::structs();
+
+    // pattern matching
+    patterns::enums();
 }
