@@ -8,7 +8,8 @@
 	</head>
 	<body>
 		<!--heading tags-->
-		<h1>Heading tags</h1>
+		<h1>Tags</h1>
+		<h2>Heading tags</h2>
 		<div>
 			<h1>Heading 1</h1>
 			<h2>Heading 2</h2>
@@ -19,9 +20,9 @@
 		</div>
 
 		<!--anchor tags-->
-		<h1>Paragrapg tags</h1>
+		<h2>Paragraph tags</h2>
 		<div>
-			<p>
+			<p id="lorem">
 				Lorem ipsum dolor sit amet consectetur adipisicing elit.
 				Voluptates molestiae, illo possimus corrupti iste minus labore
 				voluptatibus officia nihil quisquam eveniet excepturi,
@@ -30,7 +31,7 @@
 		</div>
 
 		<!--anchor tags-->
-		<h1>Anchor tags</h1>
+		<h2>Anchor tags</h2>
 		<div>
 			<div>
 				<a href="/">Link to home page</a>
@@ -44,7 +45,7 @@
 		</div>
 
 		<!--div tags-->
-		<h1>div tag</h1>
+		<h2>div tag</h2>
 		<div>
 			hello world
 			<p>inside div</p>
@@ -52,7 +53,7 @@
 		<p>outside div</p>
 
 		<!--span tags-->
-		<h1>span tag</h1>
+		<h2>span tag</h2>
 		<p>
 			hello world
 			<span style="text-decoration: underline">inside span tag</span>
@@ -60,7 +61,7 @@
 		<p>outside span tag</p>
 
 		<!--ordered list tags-->
-		<h1>Ordered list</h1>
+		<h2>Ordered list</h2>
 		<ol>
 			<li>Item 1</li>
 			<li>Item 2</li>
@@ -68,7 +69,7 @@
 		</ol>
 
 		<!--un-ordered list tags-->
-		<h1>un-ordered list</h1>
+		<h2>un-ordered list</h2>
 		<ul>
 			<li>Item 1</li>
 			<li>Item 2</li>
@@ -76,11 +77,11 @@
 		</ul>
 
 		<!--button tag-->
-		<h1>Button tags</h1>
+		<h2>Button tags</h2>
 		<button>click me</button>
 
 		<!--Image tags-->
-		<h1>Image tag</h1>
+		<h2>Image tag</h2>
 		<img
 			src="http://pets-images.dev-apis.com/pets/dog25.jpg"
 			alt="alternative text"
@@ -92,7 +93,7 @@
 		/>
 
 		<!--input tags-->
-		<h1>Input tags</h1>
+		<h2>Input tags</h2>
 		<div>
 			<div>
 				<label>text input: </label>
@@ -130,61 +131,99 @@
 					<option value="option_3">option 3</option>
 				</select>
 			</div>
+		</div>
 
-			<!--Form tag-->
-			<h1>Form tag</h1>
-			<form>
-				<div>
-					<label>name: </label>
-					<input type="text" placeholder="enter your name" />
-				</div>
-				<div>
-					<label>description: </label>
-					<textarea placeholder="enter some value"></textarea>
-				</div>
-			</form>
-
-			<!--table tags -->
-			<table>
-				<thead>
-					<tr>
-						<td>table coordinates: 0, 0</td>
-						<td>table coordinates: 0, 1</td>
-						<td>table coordinates: 0, 2</td>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>0, 0</td>
-						<td>0, 1</td>
-						<td>0, 2</td>
-					</tr>
-					<tr>
-						<td>1, 0</td>
-						<td>1, 1</td>
-						<td>1, 2</td>
-					</tr>
-					<tr>
-						<td>2, 0</td>
-						<td>2, 1</td>
-						<td>2, 2</td>
-					</tr>
-				</tbody>
-			</table>
-
-			<!--marquee-->
-			<h1>Marquee tag</h1>
+		<!--Form tag-->
+		<h2>Form tag</h2>
+		<form>
 			<div>
-				<marquee>This line moves from right to left</marquee>
+				<label>name: </label>
+				<input type="text" placeholder="enter your name" />
 			</div>
-
-			<!--break tags-->
-			<h1>Break tag</h1>
 			<div>
-				<p>line one <br />line two</p>
-				<p>line one</p>
-				<p>line two</p>
+				<label>description: </label>
+				<textarea placeholder="enter some value"></textarea>
 			</div>
+		</form>
+
+		<!--table tags -->
+		<h2>Table tags</h2>
+		<table>
+			<thead>
+				<tr>
+					<td>table coordinates: 0, 0</td>
+					<td>table coordinates: 0, 1</td>
+					<td>table coordinates: 0, 2</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>0, 0</td>
+					<td>0, 1</td>
+					<td>0, 2</td>
+				</tr>
+				<tr>
+					<td>1, 0</td>
+					<td>1, 1</td>
+					<td>1, 2</td>
+				</tr>
+				<tr>
+					<td>2, 0</td>
+					<td>2, 1</td>
+					<td>2, 2</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<!--marquee-->
+		<h2>Marquee tag</h2>
+		<div>
+			<marquee>This line moves from right to left</marquee>
+		</div>
+
+		<!--break tags-->
+		<h2>Break tag</h2>
+		<div>
+			<p>line one <br />line two</p>
+			<p>line one</p>
+			<p>line two</p>
+		</div>
+
+		<!--attributes-->
+		<h1>attributes</h1>
+		<h2>class</h2>
+		<div>
+			<h3 class="red">Heading in red</h3>
+			<h3 class="blue">Heading in blue</h3>
+		</div>
+
+		<div>
+			<p class="red">Paragraph in red</p>
+			<p class="blue">Paragraph in blue</p>
+		</div>
+
+		<h2>id</h2>
+		<div>
+			<p class="red" id="green">
+				Paragraph has class of red but id of green
+			</p>
+			<p class="blue">Paragraph in blue</p>
+		</div>
+		<div>
+			<a href="#lorem">goes to lorem ipsum para</a>
 		</div>
 	</body>
+	<style>
+		.red {
+			color: red;
+		}
+
+		.blue {
+			color: blue;
+		}
+
+		#green {
+			color: green;
+		}
+	</style>
 </html>
