@@ -1,0 +1,53 @@
+.box {
+	height: 100px;
+	width: 100px;
+	background-color: red;
+}
+
+.box:hover {
+	background-color: green;
+}
+
+.list-items {
+	color: green;
+}
+
+.item:first-child {
+	color: red;
+}
+
+.item:last-child {
+	color: blue;
+}
+
+.btn {
+	height: 100px;
+	width: 100px;
+	background-color: red;
+}
+
+.btn:active {
+	background-color: green;
+}
+
+.input-field {
+	background-color: white;
+	border: 1px solid red;
+}
+
+.input-field:focus-visible {
+	border: 1px solid green;
+	outline: none;
+}
+
+.links {
+	color: green;
+}
+
+.link {
+	color: green;
+}
+
+.link:visited {
+	color: red;
+}
