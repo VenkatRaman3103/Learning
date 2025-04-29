@@ -1,0 +1,67 @@
+.paragraph {
+	display: block;
+	background-color: #f0f0f0;
+}
+
+.highligth-1 {
+	display: inline;
+	background-color: red;
+	color: #000000;
+}
+
+.highligth-2 {
+	width: 500px;
+	display: inline-block;
+	background-color: green;
+	color: #000000;
+}
+
+.container-1 {
+	height: 200px;
+	width: 200px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	background-color: #f0f0f0;
+}
+
+.box-margin {
+	height: 100px;
+	width: 100px;
+	margin: 50px;
+	background-color: red;
+}
+
+.container-2 {
+	height: 100px;
+	width: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	background-color: #f0f0f0;
+
+	padding: 50px;
+}
+
+.box-padding {
+	height: 100px;
+	width: 100px;
+	background-color: red;
+}
+
+.container-3 {
+	height: fit-content;
+	width: fit-content;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.box-border {
+	height: 100px;
+	width: 100px;
+	background-color: red;
+	border: 50px solid #f0f0f0;
+}

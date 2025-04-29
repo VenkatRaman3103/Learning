@@ -1,0 +1,57 @@
+.main-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.title {
+	font-size: 100px;
+	background-color: white;
+}
+
+.news-paper {
+	display: grid;
+	background-color: #000000;
+	border: 2px solid black;
+	gap: 2px;
+	grid-template-areas:
+		"navbar		navbar		navbar"
+		"article-1	article-2	article-3"
+		"article-4	article-5	article-5";
+}
+
+.navbar {
+	grid-area: navbar;
+	background-color: white;
+}
+
+.article {
+	background-color: white;
+	padding: 10px;
+}
+
+ul {
+	display: flex;
+	justify-content: space-around;
+	list-style: none;
+}
+
+.article-1 {
+	grid-area: article-1;
+}
+
+.article-2 {
+	grid-area: article-2;
+}
+
+.article-3 {
+	grid-area: article-3;
+}
+
+.article-4 {
+	grid-area: article-4;
+}
+
+.article-5 {
+	grid-area: article-5;
+}
