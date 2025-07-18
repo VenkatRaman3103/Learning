@@ -1,9 +1,29 @@
-let variable = 10;
+const player = {
+	nam: "value",
+	bar: function () {
+		console.log(this.name);
+	},
+};
 
-let getType = typeof variable;
+const bob = Object.create(player);
+// console.log(Object.getPrototypeOf(bob));
 
-console.log(getType === "number");
-console.log(typeof getType === "string");
+function Players(name) {
+	this.name = name;
+}
 
-console.log(isNaN(12));
-console.log(isNaN("string"));
+Players.prototype.getName = () => {
+	return this.name;
+};
+
+class PlayersClass {
+	constructor(name) {
+		this.name = name;
+	}
+	getName() {
+		return this.name;
+	}
+}
+
+const foo = new PlayersClass("some");
+// console.log(foo);
