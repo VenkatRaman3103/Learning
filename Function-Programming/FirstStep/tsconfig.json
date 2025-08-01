@@ -1,7 +1,0 @@
-{
-  "compilerOptions": {
-    "types": ["jest", "node"]
-  },
-  "include": ["jest-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"]
-}
-
