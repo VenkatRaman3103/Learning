@@ -14,15 +14,35 @@ const server = http.createServer(app);
 // WebSocket server
 const websocket = new WebSocketServer({ server });
 
+const connections = {};
+const users = {};
+
 websocket.on("connection", (connection, req) => {
     const { name } = url.parse(req.url, true).query;
     const uuid = uuidv4();
-    console.log(connection);
-    console.log(name);
-    console.log(uuid);
+
+    connections[uuid] = connection;
+    users[uuid] = name;
+
+    connection.on("message", (message) => {
+        const user = users[uuid];
+        const msg = message.toString().trim();
+
+        const [reciever, messageToSend] = msg.split(": ");
+
+        const [friendId, friendName] = Object.entries(users).filter(
+            ([id, name]) => name == reciever,
+        )[0];
+
+        if (friendId) {
+            const friendConnection = connections[friendId];
+
+            friendConnection.send(`${user} |-> ${messageToSend}`);
+            connection.send(`Message sent to ${users[friendId]}`);
+        }
+    });
 });
 
-// http server
 app.get("/foo", (req, res) => {
     const { name } = url.parse(req.url, true).query;
     console.log(name);

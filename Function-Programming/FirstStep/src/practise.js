@@ -1,23 +1,14 @@
-export const add = (a, b) => {
-    if (typeof b != 'number') {
-        throw new TypeError('some');
-    }
-    return a + b;
-};
+function parent() {
+    let state = 0;
 
-export const returnObject = () => {
-    return {
-        a: 'foo',
-        b: undefined,
+    const setState = () => {
+        return ++state;
     };
-};
 
-export const nameWithId = 'raman-3103';
+    return setState;
+}
 
-export const stringObj = {
-    name: 'raman-3103',
-};
-
-export const asyncFunction = async () => {
-    return 12;
-};
+const foo = parent();
+console.log(foo());
+console.log(foo());
+console.log(foo());

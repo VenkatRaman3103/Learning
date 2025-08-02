@@ -1,4 +1,4 @@
-function filterFunc(predicateFunc, arr) {
+function reduceFun(predicateFunc, arr) {
     if (arr.length == 0) {
         return [];
     }
@@ -7,9 +7,9 @@ function filterFunc(predicateFunc, arr) {
 
     if (predicateFunc(item)) {
         const firstItem = [item];
-        return concat(firstItem, filterFunc(predicateFunc, tail(arr)));
+        return concat(firstItem, reduceFun(predicateFunc, tail(arr)));
     } else {
-        return filterFunc(predicateFunc, tail(arr));
+        return reduceFun(predicateFunc, tail(arr));
     }
 }
 
@@ -30,4 +30,4 @@ function predicateFunc(item) {
 }
 
 const arr = [1, 2, 3, 4, 5];
-console.log(filterFunc(predicateFunc, arr));
+console.log(reduceFun(predicateFunc, arr));
