@@ -50,4 +50,19 @@ const isEven = value => {
     return value % 2 == 0;
 };
 
-console.log(filterEvens(isEven, arr));
+// console.log(filterEvens(isEven, arr));
+
+const sumAll = (fn, accumalator, arr) => {
+    if (arr.length == 0) {
+        return accumalator;
+    }
+
+    const item = head(arr);
+    const proccessed = fn(accumalator, item);
+
+    return sumAll(fn, proccessed, tail(arr));
+};
+
+const sum = (a, b) => a + b;
+
+console.log(sumAll(sum, 0, arr));
