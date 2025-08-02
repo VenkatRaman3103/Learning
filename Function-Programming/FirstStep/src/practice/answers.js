@@ -65,4 +65,20 @@ const sumAll = (fn, accumalator, arr) => {
 
 const sum = (a, b) => a + b;
 
-console.log(sumAll(sum, 0, arr));
+// console.log(sumAll(sum, 0, arr));
+
+const capitalizeAll = (fn, arr) => {
+    if (arr.length == 0) {
+        return [];
+    }
+
+    const item = head(arr);
+    const proccessed = fn(item);
+
+    return concat([proccessed], capitalizeAll(fn, tail(arr)));
+};
+
+const changeCase = str => str.toUpperCase();
+
+const strings = ['ab', 'cd', 'ef', 'gh'];
+console.log(capitalizeAll(changeCase, strings));
