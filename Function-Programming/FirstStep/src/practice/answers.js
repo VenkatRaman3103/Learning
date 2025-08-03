@@ -124,5 +124,24 @@ const word_hash = (obj, key) => {
 
 const words = ['apple', 'banana', 'apple', 'berry', 'banana', 'apple'];
 
-const result = countWords({}, word_hash, words);
-console.log(result);
+// const result = countWords({}, word_hash, words);
+// console.log(result);
+
+export const flattenArray = (acc, fn, arr) => {
+    if (arr.length == 0) {
+        return acc;
+    }
+
+    const item = head(arr);
+
+    return flattenArray(fn(acc, item), fn, tail(arr));
+};
+
+export const addElementToArray = (parent_arr, child_arr) => {
+    for (let el of child_arr) {
+        parent_arr.push(el);
+    }
+    return parent_arr;
+};
+
+const nestedArray = [[1, 2], [3, 4], [5]];
