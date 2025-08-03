@@ -143,5 +143,3 @@ export const addElementToArray = (parent_arr, child_arr) => {
     }
     return parent_arr;
 };
-
-const nestedArray = [[1, 2], [3, 4], [5]];
