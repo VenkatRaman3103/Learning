@@ -1,4 +1,4 @@
-import { addElementToArray, flattenArray } from '../../src/practice/answers';
+import { addElementToArray, flattenArray, removeDuplicates } from '../../src/practice/answers';
 
 it('should add the element to parent arr', () => {
     const parent_arr = [1, 2];
@@ -11,4 +11,10 @@ it('should flattern the array', () => {
     const nestedArray = [[1, 2], [3, 4], [5]];
 
     expect(flattenArray([], addElementToArray, nestedArray)).toEqual([1, 2, 3, 4, 5]);
+});
+
+it('should return array with unique elements', () => {
+    const containsDuplicate = ['1', '2', '2', '3', '4', '4', '5'];
+
+    expect(removeDuplicates({}, containsDuplicate)).toEqual(['1', '2', '3', '4', '5']);
 });

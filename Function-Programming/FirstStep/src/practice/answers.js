@@ -143,3 +143,15 @@ export const addElementToArray = (parent_arr, child_arr) => {
     }
     return parent_arr;
 };
+
+export const removeDuplicates = (acc, arr) => {
+    if (arr.length == 0) {
+        return Object.keys(acc);
+    }
+
+    const item = head(arr);
+
+    acc[item] = 1 + (acc[item] || 0);
+
+    return removeDuplicates(acc, tail(arr));
+};
