@@ -80,5 +80,49 @@ const capitalizeAll = (fn, arr) => {
 
 const changeCase = str => str.toUpperCase();
 
-const strings = ['ab', 'cd', 'ef', 'gh'];
-console.log(capitalizeAll(changeCase, strings));
+// const strings = ['ab', 'cd', 'ef', 'gh'];
+// console.log(capitalizeAll(changeCase, strings));
+
+const findLongest = (fn, arr) => {
+    if (arr.length == 0) {
+        return [];
+    }
+
+    const item = head(arr);
+
+    if (fn(item)) {
+        return concat([item], findLongest(fn, tail(arr)));
+    } else {
+        return findLongest(fn, tail(arr));
+    }
+};
+
+const isLonger = str => str.length > 4;
+const strings = ['abcdw', 'cd', 'ef', 'gh'];
+
+// console.log(findLongest(isLonger, strings));
+
+const countWords = (acc, fn, arr) => {
+    if (arr.length == 0) {
+        return acc;
+    }
+
+    const item = head(arr);
+    const proccessed = fn(acc, item);
+
+    return countWords(proccessed, fn, tail(arr));
+};
+
+const word_hash = (obj, key) => {
+    if (obj[key] == undefined) {
+        obj[key] = 1;
+    } else {
+        obj[key] += 1;
+    }
+    return obj;
+};
+
+const words = ['apple', 'banana', 'apple', 'berry', 'banana', 'apple'];
+
+const result = countWords({}, word_hash, words);
+console.log(result);
