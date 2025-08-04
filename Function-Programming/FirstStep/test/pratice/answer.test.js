@@ -1,8 +1,10 @@
 import {
     addElementToArray,
     flattenArray,
+    groupByProperty,
     keyValueObj,
     removeDuplicates,
+    updateTheObj,
 } from '../../src/practice/answers';
 
 it('should add the element to parent arr', () => {
@@ -31,4 +33,31 @@ it('should make and array as object where key should be a element and value inde
     const acc = {};
 
     expect(keyValueObj(acc, arr_1, arr_2)).toEqual({ a: 1, b: 2, c: 3 });
+});
+
+describe('group by property ', () => {
+    it('should updat the obj key and the value as array', () => {
+        const obj = {};
+        const key = 21;
+        const value = { name: 'Alice', age: 21 };
+
+        expect(updateTheObj(obj, key, value)).toEqual({ 21: [value] });
+    });
+    it('shold group the array with object based on the groupBy ', () => {
+        const acc = {};
+        const groupBy = 'age';
+        const arr = [
+            { name: 'Alice', age: 21 },
+            { name: 'Bob', age: 25 },
+            { name: 'Charlie', age: 21 },
+        ];
+
+        expect(groupByProperty(acc, updateTheObj, groupBy, arr)).toEqual({
+            21: [
+                { name: 'Alice', age: 21 },
+                { name: 'Charlie', age: 21 },
+            ],
+            25: [{ name: 'Bob', age: 25 }],
+        });
+    });
 });

@@ -168,3 +168,26 @@ export const keyValueObj = (acc, arr_1, arr_2) => {
 
     return keyValueObj(acc, tail(arr_1), tail(arr_2));
 };
+
+export const groupByProperty = (acc, fn, groupBy, arr) => {
+    if (arr.length == 0) {
+        return acc;
+    }
+
+    const item = head(arr);
+    const value = item;
+    const key = item[groupBy];
+    const updatedAcc = fn(acc, key, value);
+
+    return groupByProperty(updatedAcc, fn, groupBy, tail(arr));
+};
+
+export const updateTheObj = (obj, key, value) => {
+    if (obj[key] == undefined) {
+        obj[key] = [value];
+    } else {
+        obj[key].push(value);
+    }
+
+    return obj;
+};
