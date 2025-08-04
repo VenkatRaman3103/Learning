@@ -155,3 +155,16 @@ export const removeDuplicates = (acc, arr) => {
 
     return removeDuplicates(acc, tail(arr));
 };
+
+export const keyValueObj = (acc, arr_1, arr_2) => {
+    if (arr_1.length == 0 || arr_2.length == 0) {
+        return acc;
+    }
+
+    const key = head(arr_1);
+    const value = head(arr_2);
+
+    acc[key] = value;
+
+    return keyValueObj(acc, tail(arr_1), tail(arr_2));
+};
