@@ -198,7 +198,6 @@ export const flattenNestedArray = (acc, arr) => {
     }
 
     const item = head(arr);
-    console.log(Array.isArray(item), item, acc, arr);
 
     if (Array.isArray(item)) {
         flattenNestedArray(acc, item);
@@ -207,7 +206,3 @@ export const flattenNestedArray = (acc, arr) => {
     }
     return flattenNestedArray(acc, tail(arr));
 };
-
-const acc = [];
-const nestedArr = [1, [2, [3, [4]], 5]];
-console.log(flattenNestedArray(acc, nestedArr));
