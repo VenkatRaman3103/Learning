@@ -191,3 +191,23 @@ export const updateTheObj = (obj, key, value) => {
 
     return obj;
 };
+
+export const flattenNestedArray = (acc, arr) => {
+    if (arr.length == 0) {
+        return acc;
+    }
+
+    const item = head(arr);
+    console.log(Array.isArray(item), item, acc, arr);
+
+    if (Array.isArray(item)) {
+        flattenNestedArray(acc, item);
+    } else {
+        acc.push(item);
+    }
+    return flattenNestedArray(acc, tail(arr));
+};
+
+const acc = [];
+const nestedArr = [1, [2, [3, [4]], 5]];
+console.log(flattenNestedArray(acc, nestedArr));

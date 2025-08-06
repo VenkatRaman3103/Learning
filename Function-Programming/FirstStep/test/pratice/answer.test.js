@@ -1,6 +1,7 @@
 import {
     addElementToArray,
     flattenArray,
+    flattenNestedArray,
     groupByProperty,
     keyValueObj,
     removeDuplicates,
@@ -60,4 +61,11 @@ describe('group by property ', () => {
             25: [{ name: 'Bob', age: 25 }],
         });
     });
+});
+
+it('should flattern the nested array', () => {
+    const acc = [];
+    const arr = [1, [2, [3, [4]], 5]];
+
+    expect(flattenNestedArray(acc, arr)).toEqual([1, 2, 3, 4, 5]);
 });
