@@ -1,9 +1,23 @@
 // mod collection;
 // mod module;
+// mod pattern_practice;
 // mod patterns;
-mod pattern_practice;
+
+mod loops;
 
 fn main() {
+    //variables
+    let x = 5;
+    println!("x: {x}");
+
+    let mut y = 10;
+    println!("y: {y}");
+    y = 20;
+    println!("y: {y}");
+
+    // loops
+    loops::practice::loops();
+
     // collections
     // collection::tuple();
     // collection::arrays();
@@ -14,8 +28,8 @@ fn main() {
     // patterns::patter_matching();
 
     // pattern matching practice
-    // pattern_practice::basics::day_of_week(8); // 1. day of week
-    // pattern_practice::basics::match_grade(90); // 2. match grade
-    // pattern_practice::basics::is_even(3); // 3. is even
-    pattern_practice::advace::traffic_light();
+    // pattern_practice::basics::day_of_week(8);
+    // pattern_practice::basics::match_grade(90);
+    // pattern_practice::basics::is_even(3);
+    // pattern_practice::advace::traffic_light();
 }
