@@ -1,4 +1,4 @@
-pub fn loops() {
+pub fn loops_practice() {
     let mut a = 10;
 
     loop {

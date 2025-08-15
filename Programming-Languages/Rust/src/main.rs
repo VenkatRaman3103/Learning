@@ -3,20 +3,32 @@
 // mod pattern_practice;
 // mod patterns;
 
-mod loops;
+mod activities;
+#[allow(dead_code)]
+mod arithmatics;
+// mod loops;
+// mod while_loop;
 
 fn main() {
     //variables
-    let x = 5;
-    println!("x: {x}");
+    // let x = 5;
+    // println!("x: {x}");
 
-    let mut y = 10;
-    println!("y: {y}");
-    y = 20;
-    println!("y: {y}");
+    // let mut y = 10;
+    // println!("y: {y}");
+    // y = 20;
+    // println!("y: {y}");
 
     // loops
-    loops::practice::loops();
+    // loops::practice::loops_practice();
+    // while_loop::practice::while_practice();
+
+    // activities
+    // activities::activity_1::activity_1();
+    activities::activity_2::calculator();
+
+    // arightmatics
+    // arithmatics::arithmatics();
 
     // collections
     // collection::tuple();
