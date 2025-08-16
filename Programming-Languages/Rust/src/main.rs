@@ -1,5 +1,6 @@
-use std::{io, usize};
+use std::io;
 
+#[allow(dead_code)]
 fn array_access() -> usize {
     let mut index = String::new();
 
@@ -7,10 +8,11 @@ fn array_access() -> usize {
 
     let index: usize = index.trim().parse().expect("");
 
-    return index;
+    index
 }
 
-fn main() {
+#[allow(dead_code)]
+fn basics() {
     // immutability
     let mut x = 0;
     println!("{x}");
@@ -85,7 +87,85 @@ fn main() {
     println!("{m}");
     println!("{n}");
 
-    let index = array_access();
-    let element = arr[index];
-    println!("{element}")
+    // let index = array_access();
+    // let element = arr[index];
+    // println!("{element}");
+
+    let r = {
+        let t = 10;
+        t + 2
+    };
+
+    println!("{r}");
+}
+
+#[allow(dead_code)]
+fn conditionals() {
+    let a = 10;
+
+    if a == 10 {
+        println!("a is 10");
+    } else {
+        println!("a is not 10")
+    }
+
+    let b = if a == 10 { 30 } else { 60 };
+
+    println!("b is {b}")
+}
+
+#[allow(dead_code)]
+fn loops() {
+    let mut a = 10;
+
+    loop {
+        println!("hello");
+
+        a -= 1;
+
+        if a == 0 {
+            break;
+        }
+    }
+
+    for element in 1..5 + 1 {
+        println!("{element}")
+    }
+
+    let arr: [i32; 5] = [1, 2, 3, 4, 5];
+
+    for element in arr {
+        println!("{element}")
+    }
+
+    let mut b = 10;
+
+    while b > 0 {
+        b -= 1;
+        println!("{b}")
+    }
+}
+
+fn main() {
+    // basics();
+    // conditionals();
+    // loops();
+
+    let mut str = String::from("hello");
+
+    str.push_str(" world");
+
+    println!("{str}");
+
+    let num1 = 12;
+    let num2 = num1;
+
+    println!("{num1}");
+    println!("{num2}");
+
+    let s1 = String::from("hello");
+    let s2 = s1;
+
+    println!("{s1}");
+    println!("{s2}, world")
 }
