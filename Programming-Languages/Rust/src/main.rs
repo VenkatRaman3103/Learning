@@ -146,11 +146,16 @@ fn loops() {
     }
 }
 
-fn main() {
-    // basics();
-    // conditionals();
-    // loops();
+fn change_ownership(str: String) -> (usize, String) {
+    (str.len(), str)
+}
 
+fn calculate_length(value: &String) -> usize {
+    value.len()
+}
+
+#[allow(dead_code)]
+fn barrowing_reference() {
     let mut str = String::from("hello");
 
     str.push_str(" world");
@@ -163,9 +168,72 @@ fn main() {
     println!("{num1}");
     println!("{num2}");
 
-    let s1 = String::from("hello");
-    let s2 = s1;
+    // let s1 = String::from("hello");
+    // let s2 = s1;
+    //
+    // println!("{s1}");
+    // println!("{s2}, world")
 
-    println!("{s1}");
-    println!("{s2}, world")
+    let s1 = String::from("value");
+
+    let (l, str) = change_ownership(s1);
+
+    println!("{str} - {l}");
+
+    let s2 = String::from("string");
+
+    let s3 = calculate_length(&s2);
+
+    println!("{s2} - {s3}")
+}
+
+#[allow(dead_code)]
+fn slice_practice() {
+    let s1 = "hello world";
+
+    let hello = &s1[0..5];
+
+    let whole = &s1[..];
+
+    println!("{s1} {hello}");
+    println!("{whole}");
+
+    let mut word = String::from("");
+
+    for char in s1.chars() {
+        let str = String::from(char);
+
+        word.push_str(&str);
+
+        if char == ' ' {
+            break;
+        }
+    }
+
+    println!("{word}")
+}
+
+fn main() {
+    // basics();
+    // conditionals();
+    // loops();
+    // barrowing_reference();
+    // slice_practice()
+
+    struct User {
+        first_name: String,
+        last_name: String,
+    }
+
+    let a = User {
+        first_name: String::from("Venkat"),
+        last_name: String::from("Raman"),
+    };
+
+    let b = User {
+        first_name: a.first_name,
+        last_name: String::from("some"),
+    };
+
+    let c = User { ..b };
 }
