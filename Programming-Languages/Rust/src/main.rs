@@ -150,7 +150,7 @@ fn change_ownership(str: String) -> (usize, String) {
     (str.len(), str)
 }
 
-fn calculate_length(value: &String) -> usize {
+fn calculate_length(value: &str) -> usize {
     value.len()
 }
 
@@ -189,28 +189,19 @@ fn barrowing_reference() {
 
 #[allow(dead_code)]
 fn slice_practice() {
-    let s1 = "hello world";
+    let s = String::from("hello world");
 
-    let hello = &s1[0..5];
+    let arr: [i32; 3] = [1, 2, 3];
 
-    let whole = &s1[..];
+    let first_word = &s[..5];
 
-    println!("{s1} {hello}");
-    println!("{whole}");
+    let temp = &arr[0..2];
 
-    let mut word = String::from("");
-
-    for char in s1.chars() {
-        let str = String::from(char);
-
-        word.push_str(&str);
-
-        if char == ' ' {
-            break;
-        }
+    for i in temp {
+        println!("{i}")
     }
 
-    println!("{word}")
+    println!("{first_word}")
 }
 
 fn main() {
@@ -221,19 +212,108 @@ fn main() {
     // slice_practice()
 
     struct User {
-        first_name: String,
-        last_name: String,
+        name: String,
+        active: bool,
+        key_1: i32,
+        key_2: i32,
+        key_3: i32,
     }
 
-    let a = User {
-        first_name: String::from("Venkat"),
-        last_name: String::from("Raman"),
+    let user_1 = User {
+        name: String::from("foo"),
+        active: true,
+        key_1: 12,
+        key_2: 24,
+        key_3: 36,
     };
 
-    let b = User {
-        first_name: a.first_name,
-        last_name: String::from("some"),
+    let user_2 = User {
+        name: String::from("bar"),
+        active: true,
+        ..user_1
     };
 
-    let c = User { ..b };
+    println!("{} ({})", user_1.name, user_1.active);
+    println!("{} ({})", user_2.name, user_2.active);
+
+    println!("{}", user_1.key_1);
+    println!("{}", user_1.key_2);
+    println!("{}", user_1.key_3);
+
+    // tuple struct
+    struct Color(i32, i32, i32);
+
+    let color = Color(12, 24, 36);
+    println!("{}", color.0);
+    println!("{}", color.1);
+    println!("{}", color.2);
+
+    #[derive(Debug)]
+    struct Rectangle {
+        height: i32,
+        width: i32,
+    }
+
+    impl Rectangle {
+        fn area(self: &Rectangle) -> i32 {
+            self.width * self.height
+        }
+    }
+
+    let rect = Rectangle {
+        width: 3,
+        height: 4,
+    };
+
+    let some = Rectangle::area(&rect);
+    let temp = rect.area();
+
+    println!("--> {}", some);
+    println!("--> {}", temp);
+
+    let rect_1 = Rectangle {
+        height: 12,
+        width: 24,
+    };
+
+    fn area(rect: &Rectangle) -> i32 {
+        rect.width * rect.height
+    }
+
+    println!("area of rectangle is {}", area(&rect_1));
+    println!("area of rectangle is {}", area(&rect_1));
+
+    println!("{rect_1:#?}");
+
+    println!("---");
+
+    struct StringStruct {
+        s: String,
+    }
+
+    impl StringStruct {
+        fn log_string(&self) {
+            println!("{}", self.s)
+        }
+
+        fn decorate_string(&mut self, decorator: &str) -> &String {
+            self.s.push_str(decorator);
+            &self.s
+        }
+    }
+
+    let temp_str = String::from("Hello world");
+
+    let mut str = StringStruct { s: temp_str };
+
+    str.log_string();
+    str.decorate_string(" <==");
+    str.log_string();
+
+    // enum
+
+    enum KingOfBeings {
+        Plant,
+        Human,
+    }
 }
