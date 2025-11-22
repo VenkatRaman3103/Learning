@@ -312,8 +312,22 @@ fn main() {
 
     // enum
 
-    enum KingOfBeings {
-        Plant,
-        Human,
+    #[derive(Debug)]
+    #[allow(dead_code)]
+    enum KindOfBeings {
+        Plant(String),
+        Human(String),
     }
+
+    let plant_1 = KindOfBeings::Plant(String::from("nelumbo"));
+    let me = KindOfBeings::Human(String::from("Barely Human"));
+
+    println!("{:?}", plant_1);
+    println!("{:?}", me);
+
+    let exist: Option<i32> = Option::Some(12);
+    let non_exist: Option<i32> = Option::None;
+
+    println!("{:?}", exist);
+    println!("{:?}", non_exist)
 }
